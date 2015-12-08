@@ -3,7 +3,7 @@
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateUsersTable extends Migration
+class CreateProyectoArchivosTable extends Migration
 {
     /**
      * Run the migrations.
@@ -12,13 +12,11 @@ class CreateUsersTable extends Migration
      */
     public function up()
     {
-        Schema::create('users', function (Blueprint $table) {
+        Schema::create('proyecto_archivos', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('carso',8)->unique();
-            $table->string('password', 60);
-            $table->boolean('activo');
-            $table->enum('rol', ['becario', 'administrativo','lider']);
-            $table->rememberToken();
+            $table->integer('proyecto_id')->unsigned();
+            $table->string('nombre');
+            $table->string('url_archivo');
             $table->timestamps();
         });
     }
@@ -30,6 +28,6 @@ class CreateUsersTable extends Migration
      */
     public function down()
     {
-        Schema::drop('users');
+        Schema::drop('proyecto_archivos');
     }
 }

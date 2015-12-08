@@ -11,6 +11,15 @@
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::get('login', 'LoginController@login');
+Route::get('olvide', 'LoginController@olvide');
+Route::post('login', 'LoginController@acceso');
+Route::get('logout', 'LoginController@logout');
+
+// Registration routes...
+Route::get('register', 'LoginController@registrar');
+Route::post('register', 'LoginController@registrado');
+
+
+//BECARIO
+Route::get('becario/home', 'BecarioController@index');

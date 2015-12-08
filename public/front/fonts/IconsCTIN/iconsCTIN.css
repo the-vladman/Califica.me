@@ -1,0 +1,124 @@
+@font-face {
+	font-family: 'icomoon';
+	src:url('fonts/icomoon.eot?8orxau');
+	src:url('fonts/icomoon.eot?8orxau#iefix') format('embedded-opentype'),
+		url('fonts/icomoon.ttf?8orxau') format('truetype'),
+		url('fonts/icomoon.woff?8orxau') format('woff'),
+		url('fonts/icomoon.svg?8orxau#icomoon') format('svg');
+	font-weight: normal;
+	font-style: normal;
+}
+
+[class^="icon-"], [class*=" icon-"] {
+	font-family: 'icomoon';
+	speak: none;
+	font-style: normal;
+	font-weight: normal;
+	font-variant: normal;
+	text-transform: none;
+	line-height: 1;
+
+	/* Better Font Rendering =========== */
+	-webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale;
+}
+
+.icon-calendario:before {
+	content: "\e900";
+}
+.icon-circulo_editar:before {
+	content: "\e901";
+}
+.icon-circulo_mas:before {
+	content: "\e902";
+}
+.icon-circulo_tache:before {
+	content: "\e903";
+}
+.icon-d_becarios:before {
+	content: "\e904";
+}
+.icon-d_proyectos:before {
+	content: "\e905";
+}
+.icon-editar:before {
+	content: "\e906";
+}
+.icon-engranes:before {
+	content: "\e907";
+}
+.icon-estadisticas:before {
+	content: "\e908";
+}
+.icon-evaluacion:before {
+	content: "\e909";
+}
+.icon-home:before {
+	content: "\e90a";
+}
+.icon-más:before {
+	content: "\e90b";
+}
+.icon-mundo:before {
+	content: "\e90c";
+}
+.icon-recursos:before {
+	content: "\e90d";
+}
+.icon-reloj:before {
+	content: "\e90e";
+}
+.icon-sobre:before {
+	content: "\e90f";
+}
+.icon-subir:before {
+	content: "\e910";
+}
+.icon-tache:before {
+	content: "\e911";
+}
+.icon-telefono:before {
+	content: "\e912";
+}
+.icon-ubicacion:before {
+	content: "\e913";
+}
+.icon-user:before {
+	content: "\e914";
+}
+.icon-heart:before {
+	content: "\e915";
+}
+.icon-star:before {
+	content: "\e916";
+}
+.icon-trash:before {
+	content: "\e917";
+}
+.icon-lock:before {
+	content: "\e91b";
+}
+.icon-like:before {
+	content: "\e918";
+}
+.icon-fire:before {
+	content: "\e919";
+}
+
+.icon-s{
+	font-size: 12px !important;
+}
+
+.icon-m{
+	font-size: 16px !important;
+}
+
+.icon-l{
+	font-size: 20px !important;
+}
+
+.icon-xl{
+	font-size: 30px !important;
+}
+
+

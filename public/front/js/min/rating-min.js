@@ -1,0 +1,1 @@
+$("fieldset").each(function(){index=-1*($(this).attr("data-rate")-5);for(var a=4;a>=0;a--)index>=a?$(this).append("<label class='active'></label>"):$(this).append("<label></label>")});
