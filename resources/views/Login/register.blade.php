@@ -43,8 +43,8 @@
             <form class=" form-login text-center col-lg-6 col-sm-6" method="POST" action="{{ url('/register') }}">
 
                 <input type="hidden" name="_token" value="{{ csrf_token() }}">
-                <input type="hidden" name="activo" value="1">
-                <input type="hidden" name="rol" value="becario">
+             <!--   <input type="hidden" name="activo" value="1">
+                <input type="hidden" name="rol" value="becario">  -->
                 <img class="logo" src="/front/img/logo.svg">
                 <div class="form-group text-center ">
                     <input type="idCarso" name="carso" class="form-control input" id="idCarso" placeholder="Número de Becario">

@@ -15,9 +15,10 @@ class CreateEmergenciasTable extends Migration
         Schema::create('emergencias', function (Blueprint $table) {
             $table->increments('id');
             $table->integer('becario_id')->unsigned();
-            $table->text('direccion');
             $table->string('nombre');
-            $table->string('numero');
+            $table->string('apellido_p');
+            $table->string('apellido_m');
+            $table->string('telefono');
             $table->timestamps();
         });
     }

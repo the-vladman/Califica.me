@@ -25,7 +25,7 @@ class LoginRequest extends Request
     {
         return [
             //
-            'carso' => 'required',
+            'carso' => 'required | max:8',
             'password' => 'required'
         ];
     }

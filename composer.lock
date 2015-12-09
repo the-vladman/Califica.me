@@ -4,8 +4,8 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "042f28a7c13858617a4e03a03475cbfd",
-    "content-hash": "ad87f4a892578070441b8563b762ac5e",
+    "hash": "b7522f16f2ecb6c19e2645ec94f920a3",
+    "content-hash": "10c3642dd266432578130be212a80c07",
     "packages": [
         {
             "name": "classpreloader/classpreloader",
@@ -846,16 +846,16 @@
         },
         {
             "name": "paragonie/random_compat",
-            "version": "1.1.1",
+            "version": "1.1.3",
             "source": {
                 "type": "git",
                 "url": "https://github.com/paragonie/random_compat.git",
-                "reference": "a208865a5aeffc2dbbef2a5b3409887272d93f32"
+                "reference": "b3cbb3782fc25f0b3154a89d896d81d99b87cfa3"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/paragonie/random_compat/zipball/a208865a5aeffc2dbbef2a5b3409887272d93f32",
-                "reference": "a208865a5aeffc2dbbef2a5b3409887272d93f32",
+                "url": "https://api.github.com/repos/paragonie/random_compat/zipball/b3cbb3782fc25f0b3154a89d896d81d99b87cfa3",
+                "reference": "b3cbb3782fc25f0b3154a89d896d81d99b87cfa3",
                 "shasum": ""
             },
             "require": {
@@ -890,7 +890,7 @@
                 "pseudorandom",
                 "random"
             ],
-            "time": "2015-12-01 02:52:15"
+            "time": "2015-12-09 19:35:44"
         },
         {
             "name": "psr/log",

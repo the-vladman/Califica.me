@@ -4,28 +4,27 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Emergencia extends Model
+class Direccion extends Model
 {
-/**
+    /**
      * The database table used by the model.
      *
      * @var string
      */
-    protected $table = 'emergencias';
+    protected $table = 'direccions';
 
     /**
      * The attributes that are mass assignable.
      *
      * @var array
      */
-    protected $fillable = ['nombre','apellido_p','apellido_m','telefono'];
+    protected $fillable = ['calle','numero','CP','delegacion','estado'];
 
     /**
      * The attributes excluded from the model's JSON form.
      *
      * @var array
      */
-    protected $hidden = ['nombre','apellido_p','apellido_m','telefono','created_at','updated_at'];
-
+    protected $hidden = ['calle','numero','CP','delegacion','estado'];
 
 }

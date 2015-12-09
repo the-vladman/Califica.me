@@ -3,7 +3,7 @@
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateAcademicasTable extends Migration
+class CreateDireccionsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -12,13 +12,14 @@ class CreateAcademicasTable extends Migration
      */
     public function up()
     {
-        Schema::create('academicas', function (Blueprint $table) {
+        Schema::create('direccions', function (Blueprint $table) {
             $table->increments('id');
             $table->integer('becario_id')->unsigned();
-            $table->string('universidad');
-            $table->string('carrera');
-            $table->enum('tipo', [' ','Pública', 'Privada']);
-            $table->enum('status', [' ','Estudiando', 'Título en proceso','Terminado']);
+            $table->string('calle');
+            $table->string('numero');
+            $table->string('CP');
+            $table->string('delegacion');
+            $table->string('estado');
             $table->timestamps();
         });
     }
@@ -30,6 +31,6 @@ class CreateAcademicasTable extends Migration
      */
     public function down()
     {
-        Schema::drop('academicas');
+        Schema::drop('direccions');
     }
 }

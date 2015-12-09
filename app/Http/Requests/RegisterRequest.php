@@ -25,7 +25,7 @@ class RegisterRequest extends Request
     {
         return [
             //
-            'carso' => 'required',
+            'carso' => 'required |unique:users,carso| max:8',
             'password' => 'required',
         ];
     }

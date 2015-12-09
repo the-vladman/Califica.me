@@ -8,7 +8,13 @@ use App\Http\Requests;
 use App\Http\Controllers\Controller;
 // Se agrega Auth y User
 use App\User;
+use App\Becario;
+use App\Emergencia;
+use App\Direccion;
+use App\Habilidad;
+use App\Academica;
 use Auth;
+use Carbon;
 //Se agregan los Request
 use App\Http\Requests\LoginRequest;
 use App\Http\Requests\RegisterRequest;
@@ -57,10 +63,36 @@ class LoginController extends Controller
    {
        $usuario = new User();
        $usuario->carso = $request->input('carso');
-       $usuario->activo = $request->input('activo');
-       $usuario->rol = $request->input('rol');
+       $usuario->activo = '1';
+       $usuario->rol = 'becario';
+       //$usuario->activo = $request->input('activo');
+       // $usuario->rol = $request->input('rol');
        $usuario->password = bcrypt($request->input('password'));
        $usuario->save();
+       //crear becario
+       $becario = new Becario();
+       // Trabajando con la fecha actual
+      $date = Carbon::now();
+      $becario->user_id = $usuario->id;
+      $becario->fecha_ingreso = $date->toDateString(); // Imprime una fecha en el formato día/mes/año
+       $becario->save();
+       //crear emergencia
+       $emergencia = new Emergencia();
+       $emergencia->becario_id = $becario->id;
+       $emergencia->save();
+       //crear direccion
+       $direccion = new Direccion();
+       $direccion->becario_id = $becario->id;
+       $direccion->save();
+       //crear academica
+       $academica = new Academica();
+       $academica->becario_id = $becario->id;
+       $academica->save();
+       //crear habilidad
+       $habilidad = new Habilidad();
+       $habilidad->becario_id = $becario->id;
+       $habilidad->save();
+
        return redirect('login');
    }
 

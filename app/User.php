@@ -38,12 +38,12 @@ class User extends Model implements AuthenticatableContract,
     protected $hidden = ['password','activo','rol','remember_token'];
 
 
-    public function administrativos(){
-        return $this->hasMany('App\Administrativo');
+    public function administrativo(){
+        return $this->hasOne('App\Administrativo');
     }
 
-    public function becarios(){
-        return $this->hasMany('App\Becario');
+    public function becario(){
+        return $this->hasOne('App\Becario');
     }
 
 
