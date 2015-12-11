@@ -16,7 +16,6 @@ $negro: #000000;
 $gris: #424242;
 $gris-claro: #c7c7c7;
 
-
 $active: #88aa29;
 $end: #093ccc;
 $cancel: #BF2A40; 
@@ -32,8 +31,7 @@ $aside-width:  55px;
 $aside-width-open:  $aside-width * 2 ;
 
 
-// Tipografias CTIN
-
+////// Tipografias CTIN //////
 // Lato Regular
 @font-face {
     font-family: Lato-Bold;
@@ -56,7 +54,6 @@ $aside-width-open:  $aside-width * 2 ;
     font-family: Andale;
     src: url(../fonts/AndaleMono.ttf);
 }
-
 // CTIN Icons
 @font-face {
 	font-family: 'IconsCTIN';
@@ -72,7 +69,6 @@ $aside-width-open:  $aside-width * 2 ;
 // ====================================
 // 				Mixins
 // ====================================
-
 
 @mixin transition-mix($time) {
 	-webkit-transition: all $time ease-in-out;
@@ -115,7 +111,6 @@ $aside-width-open:  $aside-width * 2 ;
 }
 //@include rotateY($num);
 
-
 @mixin perspective($num) {
 	-webkit-perspective: $num;
 	-moz-perspective: $num;
@@ -133,7 +128,6 @@ $aside-width-open:  $aside-width * 2 ;
 	filter: drop-shadow($num $num $num  $colors);
 }
 //@include shadow($num, $num, $num , $colors);
-
 
 @mixin shadow-inside() {
 	-webkit-box-shadow: inset 0px -97px 64px -29px rgba(0,0,0,0.5);
@@ -202,16 +196,12 @@ $aside-width-open:  $aside-width * 2 ;
 }
 //@include placeholder($color);
 
-
-
-
 // ====================================
 // 				Imports
 // ====================================
 
 @import 'table';
      
-
 // ====================================
 // 			General overwrite 
 // ====================================
@@ -244,7 +234,6 @@ h1, .h1 {
       display: block;
       /*font-family: 'Grand Hotel',cursive;*/
       line-height: 40px;
-      
     }
 }
 
@@ -264,7 +253,6 @@ h4, .h4{
     border-bottom: solid 2px $rojo-ctin;
 	margin: 3vh 0;
 	width: 35%;
-
 }
 
 h5, .h5 {
@@ -575,8 +563,7 @@ i{
 	align-items: center;
 	justify-content: space-between;
 	flex-wrap: wrap;
-	padding-right: 15%;
-	padding-left: 15%;
+	padding: 0 10%;
 }
 
 .center-form{
@@ -584,8 +571,7 @@ i{
 	flex-direction: row;
 	align-items: center;
 	justify-content: center;
-	padding-right: 15%;
-	padding-left: 15%;
+	padding: 0 10%;
 }
 
 .end-form{
@@ -593,8 +579,8 @@ i{
 	flex-direction: row;
 	align-items: center;
 	justify-content: flex-end;
-	padding-right: 15%;
-	padding-left: 15%;
+	padding: 0 10%;
+
 }
 
 .inline-block{
@@ -672,7 +658,7 @@ $image-size: 20vw;
 
 			a{
 				color: $negro;
-				display: block;
+				display: inline-block;
 				margin: 10px 0px 10px 0px;
 				text-decoration: none;
 				display: flex;
@@ -723,8 +709,8 @@ $image-size: 20vw;
 	 	height: 100%;
 	   
 		.col-lg-12{
-			padding-top: 3vh;
-			padding-bottom: 3vh;
+			padding-top: 1vh;
+			padding-bottom: 1vh;
 			width: 100%;
 		}
 		
@@ -772,14 +758,32 @@ $image-size: 20vw;
 		    max-height: 200px;
 		    border: none;
 		    border-radius: 50%;
+		    background-color: $azurlRey-ctin;
 		    @include transition-mix(0.5s);
 
 		    img{
 		    	width:100%;
+		    	height: auto;
 		    	opacity: 1;
 		    	@include blur(0px);
 		    	border-radius: 50%;
 		    	@include transition-mix(0.5s);
+		    }
+
+		    p{
+		    	width:100%;
+		    	padding: 0;
+		    	margin: 0;
+		    	text-transform: uppercase;
+		    	text-align: center;
+		    	color: $gris-claro;
+		    	font-family: Andale;
+		    	font-size: 18px !important;
+			    position: absolute;
+			    top: 50%;
+			    left: 0;
+			    right: 0;
+			    transform: translateY(-50%);
 		    }
 
 		    a{
@@ -834,6 +838,23 @@ $image-size: 20vw;
 
 			min-width: 150px;
 		    min-height: 150px;
+
+			&:hover, &:focus{
+		    	a{
+				    span{
+				    	font-size: 5vh; 
+				    }
+		    	}
+		    }
+		}
+
+		.img-container-ss{
+			@extend .img-container;
+			width: 60px;
+			border-color: $rojo-ctin;
+
+			min-width: 50px;
+		    min-height: 50px;
 
 			&:hover, &:focus{
 		    	a{
@@ -913,7 +934,6 @@ $image-size: 20vw;
 		  	}
 		}
 
-
 		h5{
 	 		margin-top: 5px;
 	 		margin-bottom: 5px;
@@ -941,6 +961,12 @@ $image-size: 20vw;
 					color: $rojo-ctin;
 				}
 			}
+			.img-container-ss{
+				border: solid $azul-ctin 2px;
+				a{
+					color: $rojo-ctin;
+				}
+			}
 		}
 
 		&:nth-child(even) {
@@ -950,11 +976,17 @@ $image-size: 20vw;
 					color: $azul-ctin;
 				}
 			}
+			.img-container-ss{
+				border: solid $rojo-ctin 2px;
+				a{
+					color: $rojo-ctin;
+				}
+			}
 		}
 	}
 
 	.top-down{
-		
+		 
 		width: 70vw;
 		min-width: 300px;
 		min-height: 200px;
@@ -979,7 +1011,7 @@ $image-size: 20vw;
 			padding: 20px 100px 20px 20px;
 			width: 70%;
 			color: $blanco;
-			text-align: center;
+			text-align: left;
 			small{
 				color: rgba($blanco, 0.6);
 			}
@@ -998,45 +1030,9 @@ $image-size: 20vw;
 		}
 	}
 
-// .active{
-// 	h5{
-// 		span{
-// 			color: $active;
-// 		}
-// 	}
-// }
-
-// .end{
-// 	.img-container-s{
-// 		border-color: $end !important;
-// 		img{
-// 			@include grayscale(100%);
-// 		}
-// 	}
-// 	h5{
-// 		span{
-// 			color: $end;
-// 		}
-// 	}
-// }
-
-// .cancel{
-// 	.img-container-s{
-// 		border-color: $gris !important;
-// 		img{
-// 			@include grayscale(100%);
-// 		}
-// 	}
-// 	h5{
-// 		span{
-// 			color: $cancel;
-// 		}
-// 	}
-// }
 
 .metrics-box{
-
-	@extend .center-between;
+	@extend .center-around;
 	width: 100% !important;
 	margin: 3vh 1vh;
 	.metrics{
@@ -1078,7 +1074,6 @@ $image-size: 20vw;
 			    	background: $gris-claro;
 				}
 			}
-
 		}
 }
 
@@ -1114,6 +1109,12 @@ $image-size: 20vw;
 				height: 100%;
 				overflow: hidden;
 				@include backface-visibility(hidden);
+
+				h5{
+					small{
+						color: $gris;
+					}
+				}
 			}
 
 			.board-front {
@@ -1131,7 +1132,11 @@ $image-size: 20vw;
 				@include transition-mix(1s);
 			}
 
-			&:hover {
+			
+		}
+
+		&:hover {
+			.board-flip {
 				@include rotateY(180deg);
 			}
 		}
@@ -1254,6 +1259,58 @@ $image-size: 20vw;
 	
 				input{
 					width: 200px;
+
+					// ====================================
+					//              Input File
+					// ====================================
+
+					&.inputfile{
+						display: none;
+
+						& + label {
+							width: 200px;
+							height: 30px;
+						    max-width: 300px;
+						    font-size: 14px;
+						    padding: 2px 20px;
+
+						    text-overflow: ellipsis;
+						    white-space: nowrap;
+						    overflow: hidden;
+						    cursor: pointer;
+						    
+						    @extend .center-between;
+						    flex-wrap: nowrap;
+						    @include transition-mix(0.5s);
+
+						    color: $blanco;
+						    background-color: $btn-normal;
+						    border-radius: 20px;
+
+						    svg{
+						    	width: 20px;
+							    height: 20px;
+							    min-width: 20px;
+							    min-height: 20px;
+							    vertical-align: middle;
+							    fill: currentColor;
+							    display: inline-block;
+							    margin: 0 10px 0 0;
+						    }
+
+						    &:focus,
+							&.has-focus,
+							&:hover{
+							    background-color: $btn-hover;
+							}
+						}
+
+						&:focus + label,
+						&.has-focus + label {
+						    // outline: 1px dotted #000;
+						    // outline: -webkit-focus-ring-color auto 5px;
+						}
+					}
 				}
 	
 				textarea{
@@ -1289,8 +1346,7 @@ $image-size: 20vw;
 					margin-top: 10px;
 					label{
 						display: inline-block;
-						margin-left: 30px;
-						margin-right: 30px;
+						margin: 0 2vw;
 						input{
 							width: 15px;
 						}
@@ -1301,27 +1357,6 @@ $image-size: 20vw;
 					margin-top: 40px;
 					margin-bottom: 40px; 
 					font-family: Lato-regular;
-				}
-
-				.custom-file-input::-webkit-file-upload-button {
-				  visibility: hidden;
-				}
-				.custom-file-input::before {
-				  content: 'Archivo';
-				  display: inline-block;
-				  border: solid 2px transparent;  
-				  border-radius: 20px;
-				  color:  $blanco;
-				  background-color: $btn-normal;
-				  font-weight: normal;
-				  padding: 4px 15px;
-				  margin: 5px 0px;
-				  @include transition-mix(0.5s);
-
-				  &:hover::before , &:focus::before , &:active::before {
-				  	background-color: $btn-hover;
-				  }
-				
 				}
 			}
 	}
@@ -1338,6 +1373,9 @@ $image-size: 20vw;
 			}
 		}
 	}
+
+
+
 
 // ====================================
 //            Buttos
@@ -1422,7 +1460,6 @@ fieldset {
 
  	.general-info{
 		.form-group{
-
 			label{
 				padding: 0 15% 0 0;
 			}
@@ -1549,6 +1586,7 @@ fieldset {
 		p{
 			padding: 5px; 
 			position: relative;
+			text-align: center;
 			top: -50px;
 			font-size: 14px;
 		}
@@ -1726,6 +1764,80 @@ fieldset {
 //   background-image: url(../Img/btn-04.svg); 
 // }
 
+
+.chat {
+  background: $gris-claro;
+  color: $azul-ctin;
+  border-radius: 20px;
+		  
+	.chat-header {
+	  //border-bottom: 3px solid white;
+	}
+
+	.chat-history {
+	  // padding: 20px;
+	  overflow-y: scroll;
+	  height: 300px;
+	  width: 100%;
+	  margin:2vh 0;
+
+	  background-color: $blanco;
+	  @extend .center;
+	  align-items: flex-start;
+	  
+	  ul{
+	  	width: 100%;
+	  	@extend .center;
+
+	  	.active{
+	  		border-color: $active;
+	  		border-width: 5px;
+	  	}
+
+		li{
+		  	margin: 20px 0px;
+		  	padding: 0 20px;
+		  	width: 90%;
+		  	min-width: 200px;
+
+		  	list-style: none;
+		  	border: solid $azurlRey-ctin 2px;
+		  	border-radius: 15px;
+		  	background-color: $blanco;
+
+		  	.mesage-area{
+		  		width: 80%;
+		  		padding: 5px;
+		  		.message-data-time {
+				  color: $rojo-ctin;
+				  font-family: Andale;
+				  border-bottom: solid $azul-ctin 2px;
+				}
+
+				.message {
+				  color: $negro;
+				  font-family: Lato;
+				}
+		  	}
+
+		  }
+		}
+	  }
+
+	.chat-message {
+	  margin: 1vh 0;
+	  textarea {
+		  width: 60%;
+		  height: 100px;
+		  border: solid $gris 2px;
+		  padding: 10px 20px;
+		  margin-bottom: 10px;
+		  border-radius: 20px;
+		  resize: none;
+		  color: $gris;
+		}
+	}
+}
 
 
 

@@ -50,7 +50,7 @@
                     </li>
 
                     <li class="text-center row-5">
-                        <a href="becario.html"> 
+                        <a href="{{ url('/becario/perfil') }}"> 
                             <i class="icon-user"></i>
                             <samp>Perfil</samp>
                         </a>
@@ -90,7 +90,8 @@
         <!-- General Container -->
         <div class="page-wrapper">
 
-        @yield('becario')
+        @yield('home')
+        @yield('perfil')
 
         </div>
         <!-- END General Container -->

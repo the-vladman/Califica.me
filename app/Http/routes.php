@@ -23,3 +23,4 @@ Route::post('register', 'LoginController@registrado');
 
 //BECARIO
 Route::get('becario/home', 'BecarioController@index');
+Route::get('becario/perfil', 'BecarioController@my_perfil');

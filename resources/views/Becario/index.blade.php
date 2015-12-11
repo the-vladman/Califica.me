@@ -1,13 +1,11 @@
 @extends('becario')
 
-@section('becario')
-
-            <div class="general-info col-sm-10 col-sm-offset-1">
+@section('home')
+<div class="general-info col-sm-10 col-sm-offset-1">
 
                     <section class="row">
                         <div class="center text-center">
- 
-                           
+
                             <div class="board-container">
                                 <div class="board-flip">
                                     <div class="board-front">
@@ -146,7 +144,6 @@
                             </div>
                         </div>
                     </section> 
-
                     <section class="row center">
                         <div class="top-down">
                             <div class="top-img">
@@ -156,8 +153,33 @@
                                     </div>
                                 </div>
                             </div> 
-                            <p class="col-sm-6" > Si puedes ver tu foto, lamentamos informarte que estás dentro de los 5 CTINeros con pero evaluacion. <br/> <small>No te preocupes aún tienes salvación del fuego eterno. <br/>¡Ponte las pilas chavo! </small> </p>
+                            <p class="col-sm-6" > Si puedes ver tu foto, lamentamos informarte que estás dentro de los 5 CTINeros con peor evaluacion. <br/> <small>No te preocupes aún tienes salvación del fuego eterno. <br/>¡Ponte las pilas chavo! </small> </p>
                         </div>
+                    </section>
+                    <section class=" row">
+                        <h3>Recursos</h3>
+                        <div class="col-lg-12 center-around">
+
+                            <div class="img-general-link">
+                                <div class="img-container-s">
+                                    <p>Reglamento CTIN</p>
+                                    <a href="becario-simple.html" download="becario-simple" ><span class="icon-recursos"></span></a>
+                                </div>
+                            </div> 
+                            <div class="img-general-link">
+                                <div class="img-container-s">
+                                    <p>Video Ctin</p>
+                                    <a href="becario-simple.html" download="becario-simple"><span class="icon-recursos"></span></a>
+                                </div>
+                            </div> 
+                            <div class="img-general-link">
+                                <div class="img-container-s">
+                                    <p>Propuesta Proyecto</p>
+                                    <a href="becario-simple.html" download="becario-simple"><span class="icon-recursos"></span></a>
+                                </div>
+                            </div>
+                        
+                        </div>                 
                     </section>
                     <section class="row">
                         
@@ -220,7 +242,6 @@
                             
                             
                         </div>
-
                     </section>
 
                 </div>
@@ -228,4 +249,5 @@
                 <!-- General User data -->
                 
             <!-- END Generl  -->
+
 @endsection
