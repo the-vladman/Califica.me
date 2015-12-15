@@ -159,25 +159,14 @@
                     <section class=" row">
                         <h3>Recursos</h3>
                         <div class="col-lg-12 center-around">
-
+                        @foreach($recursos as $recurso)
                             <div class="img-general-link">
                                 <div class="img-container-s">
-                                    <p>Reglamento CTIN</p>
-                                    <a href="becario-simple.html" download="becario-simple" ><span class="icon-recursos"></span></a>
+                                    <p>{{ $recurso->nombre }}</p>
+                                    <a href="/CTIN/recursos/{{ $recurso->url_recurso }}" download="{{ $recurso->url_recurso }}" ><span class="icon-recursos"></span></a>
                                 </div>
                             </div> 
-                            <div class="img-general-link">
-                                <div class="img-container-s">
-                                    <p>Video Ctin</p>
-                                    <a href="becario-simple.html" download="becario-simple"><span class="icon-recursos"></span></a>
-                                </div>
-                            </div> 
-                            <div class="img-general-link">
-                                <div class="img-container-s">
-                                    <p>Propuesta Proyecto</p>
-                                    <a href="becario-simple.html" download="becario-simple"><span class="icon-recursos"></span></a>
-                                </div>
-                            </div>
+                        @endforeach
                         
                         </div>                 
                     </section>

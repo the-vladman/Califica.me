@@ -7,8 +7,8 @@
                     <section class=" info-header row between-form">
                         <div class="col-md-4 img-general-link">
                             <div class="img-container-l">
-                                <img class=" " src="../img/user.png">
-                                <a href="b-settings.html"><span class="icon-engranes"></span></a>
+                                <img class=" " src="/CTIN/becarios/{{ $becario->url_img }}">
+                                <a href="{{ url('/becario/perfil/edit') }}"><span class="icon-engranes"></span></a>
                             </div>
                             <fieldset class="rating" data-rate ="3"></fieldset>
                         </div>
@@ -16,9 +16,11 @@
                             <h3>{{ $becario->nombres}} {{ $becario->apellido_p}} {{ $becario->apellido_m}}</h3>
                             @foreach($becario->academicas as $escuela)
                             <p><b>Carrera: </b>{{ $escuela->carrera}}</p> 
-                            <p><b>Universidad: </b> UNAM, Facultad de Ingeniería</p>
+                            <p><b>Universidad: </b>{{ $escuela->universidad}}</p>
                             @endforeach 
-                            <p><b>Habilidades: </b>Bacon ipsum dolor amet chicken kielbasa spare ribs tenderloin sausage filet mignon, capicola fatback salami tail tongue. Venison doner leberkas ribeye sirloin strip steak short loin. Alcatra capicola prosciutto, spare ribs flank tri-tip doner. Fatback ground round pastrami strip steak beef ribs. Rump salami short ribs ham, cow bacon shank. Spare ribs rump flank pig drumstick pork chop..</p>
+                            <p><b>Habilidades: </b>
+                            {{ $becario->habilidades->habilidad}}
+                            ...</p>
                         </div>
                     </section>
 
@@ -73,7 +75,7 @@
 
                             <div class="img-general-link">
                                 <div class="img-container-s  progress-0">
-                                    <img class=" " src="../img/project.png">
+                                    <img class=" " src="/front/img/project.png">
                                     <a href="p-settings.html"><span class="icon-d_proyectos"></span></a>
                                 </div>
                                 <h5> <small>CTIN</small> </h5>
@@ -81,7 +83,7 @@
                             </div>
                             <div class="img-general-link">
                                 <div class="img-container-s  progress-30">
-                                    <img class=" " src="../img/project.png">
+                                    <img class=" " src="/front/img/project.png">
                                     <a href="p-settings.html"><span class="icon-d_proyectos"></span></a>
                                 </div>
                                 <h5> <small>CTIN</small> </h5>
@@ -89,7 +91,7 @@
                             </div>
                             <div class="img-general-link">
                                 <div class="img-container-s  progress-60">
-                                    <img class=" " src="../img/project.png">
+                                    <img class=" " src="/front/img/project.png">
                                     <a href="p-settings.html"><span class="icon-d_proyectos"></span></a>
                                 </div>
                                 <h5> <small>CTIN</small> </h5>
@@ -97,7 +99,7 @@
                             </div>
                             <div class="img-general-link">
                                 <div class="img-container-s  progress-100">
-                                    <img class=" " src="../img/project.png">
+                                    <img class=" " src="/front/img/project.png">
                                     <a href="p-settings.html"><span class="icon-d_proyectos"></span></a>
                                 </div>
                                 <h5> <small>CTIN</small> </h5>

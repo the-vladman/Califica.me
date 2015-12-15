@@ -29,6 +29,11 @@ class Becario extends Model
     protected $hidden = ['nombres','apellido_p','apellido_m','genero','area','sangre','fecha_ingreso','descripcion','email','telefono'];
 
 
+    public function proyectos()
+    {
+        return $this->belongsToMany('App\Proyecto');
+    }
+
     public function emergencia(){
         return $this->hasOne('App\Emergencia');
     }
@@ -42,6 +47,6 @@ class Becario extends Model
     }
 
     public function habilidades(){
-        return $this->hasMany('App\Habilidad');
+        return $this->hasOne('App\Habilidad');
     }
 }

@@ -76,6 +76,7 @@ class LoginController extends Controller
        // Trabajando con la fecha actual
       $date = Carbon::now();
       $becario->user_id = $usuario->id;
+      $becario->url_img = 'user.png';
       $becario->fecha_ingreso = $date->toDateString(); // Imprime una fecha en el formato día/mes/año
       $becario->save();
        //crear emergencia

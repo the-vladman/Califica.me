@@ -11,6 +11,8 @@
 
     <title>CTIN | Centro de Tecnología e Innovación</title>
 
+    <!-- Normalize CSS -->
+    <link href="/front/css/normalize.css" rel="stylesheet">
     <!-- Bootstrap Core CSS -->
     <link href="/front/css/bootstrap.min.css" rel="stylesheet">
     <!-- Custom CSS -->
@@ -28,7 +30,7 @@
             
             <!-- Header logo -->
             <div class="navbar-header">
-                <a class="navbar-brand" href="index.html">
+                <a class="navbar-brand" href="{{ url('/becario/home') }}">
                     <img class="logo" src="/front/img/logo.svg">
                 </a>
             </div> <!-- END Header logo -->
@@ -37,8 +39,8 @@
             <div class="navbar-collapse">
                 <ul class="nav navbar-nav side-nav">
 
-                    <li class="text-center row-5-1 active">
-                        <a href="home.html">
+                    <li class="text-center row-5-2">
+                        <a href="{{ url('/becario/home') }}">
                             <i class="icon-home"></i>
                             <samp>Inicio</samp>
                         </a>
@@ -46,6 +48,10 @@
                             <li  class=" text-center row-10">
                                 <a href="{{ url('/logout') }}">Salir</a>
                             </li>
+                            <li  class=" text-center row-10">
+                                <a href="{{ url('/becario/buzon') }}">Buzón</a>
+                            </li>
+
                         </ul>
                     </li>
 
@@ -71,13 +77,13 @@
                     </li>
                     
                     <li class="text-center row-5">
-                        <a href="directorio-b.html">
+                        <a href="{{ url('/becario/lista') }}">
                             <i class="icon-d_becarios"></i>
                             <samp>Becarios</samp>
                         </a>
                     </li>
                     <li class="text-center row-5">
-                        <a href="projects.html">
+                        <a href="{{ url('/becario/proyectos') }}">
                             <i class="icon-d_proyectos"></i>
                             <samp>Proyectos</samp>
                         </a>
@@ -92,6 +98,8 @@
 
         @yield('home')
         @yield('perfil')
+        @yield('becarios')
+        @yield('proyectos')
 
         </div>
         <!-- END General Container -->
@@ -100,7 +108,12 @@
     <script src="/front/js/jquery.js"></script>
     <!-- rating js -->
     <script src="/front/js/rating.js"></script>
+    <!-- Bootstrap -->
+    <script src="/front/js/bootstrap.min.js"></script>
+    <!-- Bootstrap-table js -->
+    <script src="/front/js/bootstrap-table.js"></script>
 
+    @yield('js')
 </body>
 
 </html>
