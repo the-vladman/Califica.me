@@ -9,6 +9,7 @@ use App\Http\Requests\DireccionRequest;
 use App\Http\Requests\EmergenciaRequest;
 use App\Http\Requests\AcademicaRequest;
 use App\Http\Requests\HabilidadRequest;
+use App\Http\Requests\UpdateProyectoRequest;
 //
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
@@ -134,7 +135,7 @@ class BecarioController extends Controller
 
         return redirect('becario/perfil/edit');
     }
-
+//////PROYECTOSSS
     public function list_becarios(){
         $user = Auth::user();
         $users = User::all();
@@ -161,4 +162,34 @@ class BecarioController extends Controller
         $proyecto = Proyecto::find($id);
         return view('Proyecto/show_proyecto',compact('user','proyecto'));
     }
+
+    public function edit_proyecto($id){
+        $user = Auth::user();
+        $proyecto = Proyecto::find($id);
+        return view('Proyecto/edit_proyecto',compact('user','proyecto'));
+    }
+
+    public function update_proyecto($id,UpdateProyectoRequest $request){
+        $proyecto = Proyecto::find($id);
+        $proyecto->nombre = $request->input('nombre');
+        $proyecto->progreso = $request->input('progreso');
+        $proyecto->tipo = $request->input('tipo');
+        $proyecto->area = $request->input('area');
+        $proyecto->end = $request->input('end');
+        $proyecto->descripcion = $request->input('descripcion');
+
+        if($request->file('imagen')){
+            $file = $request->file('imagen');
+            $nombre = 'proyecto'.$proyecto->id;
+            Storage::put('proyectos/logos/'.$nombre, \File::get($file));
+            $proyecto->url_logo = $nombre;
+            $proyecto->save();   
+        }
+        else{
+            $proyecto->save();  
+        }
+        return redirect('becario/proyectos/'.$proyecto->id.'/edit');
+    }
+    
+
 }

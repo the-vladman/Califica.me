@@ -19,7 +19,7 @@
                                 @foreach($users as $user)
                                     <tr>
                                         <td>
-                                            <a href="/becario/lista/{{ $user->id }}"> 
+                                            <a href="/becario/lista/{{ $user->becario->id }}"> 
                                                 <i class="icon-user icon-l"></i>
                                             </a>
                                         </td>

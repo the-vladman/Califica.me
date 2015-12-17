@@ -4,7 +4,7 @@ namespace App\Http\Requests;
 
 use App\Http\Requests\Request;
 
-class DireccionRequest extends Request
+class UpdateProyectoRequest extends Request
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -25,12 +25,13 @@ class DireccionRequest extends Request
     {
         return [
             //
-            'id_direccion' => 'required',
-            'calle' => 'required',
-            'numero' => 'required',
-            'CP' => 'required|numeric',
-            'delegacion' => 'required',
-            'estado' => 'required',
+            'nombre'=>'required',
+            'imagen' => 'image',
+            'progreso' => 'numeric',
+            'tipo' => 'required',
+            'area' => 'required',
+            'end' => 'required',
+            'descripcion' => 'required'
         ];
     }
 }

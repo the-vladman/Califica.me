@@ -23,33 +23,20 @@
                         <h4>Integrantes</h4>
                         <div class="col-lg-12 center-around">
 
+                        @foreach($proyecto->becarios as $becario)
                             <div class="img-general-link">
                                 <div class="img-container-s">
-                                    <img class=" " src="/front/img/user.png">
-                                    <a href="becario-simple.html"><span class="icon-user"></span></a>
+                                    <img class=" " src="/CTIN/becarios/{{ $becario->url_img }}">
+                                    <a href="/becario/lista/{{ $becario->id }}"><span class="icon-user"></span></a>
                                 </div>
-                                <h5><small>Software</small></h5>
-                                <h5>Miguel Angel Ruiz Gálvez</h5>
-                                <h5><small>Ing. Mecatrónico</small></h5>
-                            </div> 
-                            <div class="img-general-link">
-                                <div class="img-container-s">
-                                    <img class=" " src="/front/img/user.png">
-                                    <a href="becario-simple.html"><span class="icon-user"></span></a>
-                                </div>
-                                <h5><small>Software</small></h5>
-                                <h5>Miguel Angel Ruiz Gálvez</h5>
-                                <h5><small>Ing. Mecatrónico</small></h5>
-                            </div> 
-                            <div class="img-general-link">
-                                <div class="img-container-s">
-                                    <img class=" " src="/front/img/user.png">
-                                    <a href="becario-simple.html"><span class="icon-user"></span></a>
-                                </div>
-                                <h5><small>Software</small></h5>
-                                <h5>Miguel Angel Ruiz Gálvez</h5>
-                                <h5><small>Ing. Mecatrónico</small></h5>
-                            </div>
+                                <h5><small>{{ $becario->area }}</small></h5>
+                                <h5>{{ $becario->nombres }} {{ $becario->apellido_p }} {{ $becario->apellido_m }}</h5>
+                                @foreach($becario->academicas as $academica)
+                                <h5><small>{{ $academica->carrera }}</small></h5>
+                                @endforeach
+                            </div>  
+                        @endforeach  
+
                         </div>                 
                     </section>
 

@@ -31,7 +31,7 @@ class Becario extends Model
 
     public function proyectos()
     {
-        return $this->belongsToMany('App\Proyecto');
+        return $this->belongsToMany('App\Proyecto','b_ps','becario_id','proyecto_id');
     }
 
     public function emergencia(){

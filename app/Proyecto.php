@@ -18,7 +18,7 @@ class Proyecto extends Model
      *
      * @var array
      */
-    protected $fillable = ['nombre','url_logo','progreso','descripcion','tipo','area','end'];
+    protected $fillable = ['nombre','url_logo','progreso','integrantes','max_integrantes','descripcion','tipo','area','start','end'];
 
     /**
      * The attributes excluded from the model's JSON form.
@@ -26,12 +26,12 @@ class Proyecto extends Model
      * @var array
      */
 
-    protected $hidden = ['nombre','url_logo','progreso','descripcion','tipo','area','end'];
+    protected $hidden = ['nombre','url_logo','progreso','integrantes','max_integrantes','descripcion','tipo','area','start','end'];
 
 
     public function becarios()
     {
-        return $this->belongsToMany('App\Becario');
+        return $this->belongsToMany('App\Becario','b_ps','proyecto_id','becario_id');
     }
 
     

@@ -72,41 +72,16 @@
                     <section class=" row">
                         <h4>Mis Proyectos</h4>
                         <div class="col-lg-12 center-around">
-
-                            <div class="img-general-link">
-                                <div class="img-container-s  progress-0">
-                                    <img class=" " src="/front/img/project.png">
-                                    <a href="p-settings.html"><span class="icon-d_proyectos"></span></a>
+                        @foreach($becario->proyectos as $proyecto)
+                            <div class="img-general-link active">
+                                <div class="img-container progress-{{ $proyecto->progreso }}">
+                                    <img class=" " src="/CTIN/proyectos/logos/{{ $proyecto->url_logo }}">
+                                    <a href="/becario/proyectos/{{ $proyecto->id }}/edit"><span class="icon-d_proyectos"></span></a>
                                 </div>
-                                <h5> <small>CTIN</small> </h5>
-                                <h5>Apuntate</h5>
-                            </div>
-                            <div class="img-general-link">
-                                <div class="img-container-s  progress-30">
-                                    <img class=" " src="/front/img/project.png">
-                                    <a href="p-settings.html"><span class="icon-d_proyectos"></span></a>
-                                </div>
-                                <h5> <small>CTIN</small> </h5>
-                                <h5>Apuntate</h5>
-                            </div>
-                            <div class="img-general-link">
-                                <div class="img-container-s  progress-60">
-                                    <img class=" " src="/front/img/project.png">
-                                    <a href="p-settings.html"><span class="icon-d_proyectos"></span></a>
-                                </div>
-                                <h5> <small>CTIN</small> </h5>
-                                <h5>Apuntate</h5>
-                            </div>
-                            <div class="img-general-link">
-                                <div class="img-container-s  progress-100">
-                                    <img class=" " src="/front/img/project.png">
-                                    <a href="p-settings.html"><span class="icon-d_proyectos"></span></a>
-                                </div>
-                                <h5> <small>CTIN</small> </h5>
-                                <h5>Apuntate</h5>
-                            </div>   
-                            
-                        </div>
+                                <h5> <small>{{ $proyecto->area }}</small> </h5>
+                                <h5>{{ $proyecto->nombre }}</h5>
+                            </div> 
+                        @endforeach  
                     </section>
                 </div><!-- General User data -->
                 

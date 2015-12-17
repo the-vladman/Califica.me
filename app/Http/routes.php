@@ -38,3 +38,6 @@ Route::get('becario/lista/{id}', 'BecarioController@show_becario');
 //LISTA PROYECTOS
 Route::get('becario/proyectos', 'BecarioController@list_proyectos');
 Route::get('becario/proyectos/{id}', 'BecarioController@show_proyecto');
+Route::get('becario/proyectos/{id}/edit', 'BecarioController@edit_proyecto');
+Route::patch('becario/proyectos/{id}/edit/p', 'BecarioController@update_proyecto');
+Route::patch('becario/proyectos/{id}/edit/r', 'BecarioController@subir_recursos');

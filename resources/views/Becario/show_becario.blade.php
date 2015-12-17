@@ -30,40 +30,16 @@
                     <section class=" row">
                         <h3>Proyectos</h3>
                         <div class="col-lg-12 center-around">
-
-                            <div class="img-general-link">
-                                <div class="img-container-s  progress-0">
-                                    <img class=" " src="/front/img/project.png">
-                                    <a href="project-simple.html"><span class="icon-d_proyectos"></span></a>
+                        @foreach($becario->proyectos as $proyecto)
+                            <div class="img-general-link active">
+                                <div class="img-container progress-{{ $proyecto->progreso }}">
+                                    <img class=" " src="/CTIN/proyectos/logos/{{ $proyecto->url_logo }}">
+                                    <a href="/becario/proyectos/{{ $proyecto->id }}"><span class="icon-d_proyectos"></span></a>
                                 </div>
-                                <h5> <small>CTIN</small> </h5>
-                                <h5>Apuntate</h5>
-                            </div>
-                            <div class="img-general-link">
-                                <div class="img-container-s  progress-30">
-                                    <img class=" " src="/front/img/project.png">
-                                    <a href="project-simple.html"><span class="icon-d_proyectos"></span></a>
-                                </div>
-                                <h5> <small>CTIN</small> </h5>
-                                <h5>Apuntate</h5>
-                            </div>
-                            <div class="img-general-link">
-                                <div class="img-container-s  progress-60">
-                                    <img class=" " src="/front/img/project.png">
-                                    <a href="project-simple.html"><span class="icon-d_proyectos"></span></a>
-                                </div>
-                                <h5> <small>CTIN</small> </h5>
-                                <h5>Apuntate</h5>
-                            </div>
-                            <div class="img-general-link">
-                                <div class="img-container-s  progress-100">
-                                    <img class=" " src="/front/img/project.png">
-                                    <a href="project-simple.html"><span class="icon-d_proyectos"></span></a>
-                                </div>
-                                <h5> <small>CTIN</small> </h5>
-                                <h5>Apuntate</h5>
-                            </div>   
-                            
+                                <h5> <small>{{ $proyecto->area }}</small> </h5>
+                                <h5>{{ $proyecto->nombre }}</h5>
+                            </div> 
+                        @endforeach  
                         </div>
                     </section>
 
