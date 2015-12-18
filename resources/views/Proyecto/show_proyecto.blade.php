@@ -44,12 +44,14 @@
                         <h4>Recursos</h4>
                         <div class="col-lg-12 center-around">
                         @foreach($proyecto->recursos as $recurso)
+                            @if($recurso->nombre)
                             <div class="img-general-link">
                                 <div class="img-container-s">
                                     <p>{{ $recurso->nombre }}</p>
                                     <a href="/CTIN/proyectos/recursos/{{ $recurso->url_archivo }}" download="{{ $recurso->url_archivo }}" ><span class="icon-recursos"></span></a>
                                 </div>
-                            </div> 
+                            </div>
+                            @endif 
                         @endforeach
                         </div>                 
                     </section>

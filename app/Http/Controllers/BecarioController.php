@@ -10,6 +10,7 @@ use App\Http\Requests\EmergenciaRequest;
 use App\Http\Requests\AcademicaRequest;
 use App\Http\Requests\HabilidadRequest;
 use App\Http\Requests\UpdateProyectoRequest;
+use App\Http\Requests\RecursosRequest;
 //
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
@@ -24,6 +25,7 @@ use Auth;
 //Sin relaicon
 use App\Recurso;
 use App\Proyecto;
+use App\Proyecto_archivo;
 use Storage;
 //use DB;
 
@@ -190,6 +192,57 @@ class BecarioController extends Controller
         }
         return redirect('becario/proyectos/'.$proyecto->id.'/edit');
     }
-    
+
+
+    public function subir_recursos($id,RecursosRequest $request){
+        $proyecto = Proyecto::find($id);
+        $infografia = Proyecto_archivo::where('url_archivo','infografia'.$proyecto->id)->first();
+        $presentacion = Proyecto_archivo::where('url_archivo','presentacion'.$proyecto->id)->first();
+        $plan = Proyecto_archivo::where('url_archivo','plan'.$proyecto->id)->first();
+        $extra = Proyecto_archivo::where('url_archivo','extra'.$proyecto->id)->first();
+
+
+        if($request->file('infografia')){
+            $a_i = $request->file('infografia');
+            $e_i = $request->file('infografia')->getClientOriginalExtension();
+            $n_i = 'infografia'.$proyecto->id.'.'.$e_i;
+            Storage::put('proyectos/recursos/'.$n_i, \File::get($a_i));
+            $infografia->url_archivo = $n_i;
+            $infografia->nombre = 'infografía';  
+            $infografia->save();   
+        }
+
+        if($request->file('presentacion')){
+            $a_p = $request->file('presentacion');
+            $e_p = $request->file('presentacion')->getClientOriginalExtension();
+            $n_p = 'presentacion'.$proyecto->id.'.'.$e_p;
+            Storage::put('proyectos/recursos/'.$n_p, \File::get($a_p));
+            $presentacion->url_archivo = $n_p;
+            $presentacion->nombre = 'presentación';
+            $presentacion->save();   
+        }
+
+        if($request->file('plan')){
+            $a_l = $request->file('plan');
+            $e_l = $request->file('plan')->getClientOriginalExtension();
+            $n_l = 'plan'.$proyecto->id.'.'.$e_l;
+            Storage::put('proyectos/recursos/'.$n_l, \File::get($a_l));
+            $plan->url_archivo = $n_l;
+            $plan->nombre = 'plan';
+            $plan->save();   
+        }
+
+        if($request->file('extra')){
+            $a_e = $request->file('extra');
+            $e_e = $request->file('extra')->getClientOriginalExtension();
+            $n_e = 'extra'.$proyecto->id.'.'.$e_e;
+            Storage::put('proyectos/recursos/'.$n_e, \File::get($a_e));
+            $extra->url_archivo = $n_e;
+            $extra->nombre = 'extra';
+            $extra->save();   
+        }
+
+        return redirect('becario/proyectos/'.$proyecto->id.'/edit');
+    }
 
 }
