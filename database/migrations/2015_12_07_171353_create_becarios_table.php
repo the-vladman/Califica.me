@@ -15,6 +15,8 @@ class CreateBecariosTable extends Migration
         Schema::create('becarios', function (Blueprint $table) {
             $table->increments('id');
             $table->integer('user_id')->unsigned();
+            $table->boolean('cid');
+            $table->string('extras_total');
             $table->string('nombres', 80);
             $table->string('url_img', 80);
             $table->string('apellido_p', 50);

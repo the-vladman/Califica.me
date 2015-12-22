@@ -96,7 +96,7 @@ class LoginController extends Controller
       $habilidad->becario_id = $becario->id;
       $habilidad->save();
 
-       return redirect('login');
+       return redirect('register');
    }
 
 

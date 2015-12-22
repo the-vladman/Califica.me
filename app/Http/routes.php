@@ -41,3 +41,9 @@ Route::get('becario/proyectos/{id}', 'BecarioController@show_proyecto');
 Route::get('becario/proyectos/{id}/edit', 'BecarioController@edit_proyecto');
 Route::patch('becario/proyectos/{id}/edit/p', 'BecarioController@update_proyecto');
 Route::patch('becario/proyectos/{id}/edit/r', 'BecarioController@subir_recursos');
+Route::patch('becario/proyectos/{id}/edit/i', 'BecarioController@agregar_integrantes');
+
+/// EVALUACION
+Route::get('becario/evaluacion/mis_tareas', 'BecarioController@mis_tareas');
+Route::post('becario/evaluacion/mis_tareas/t', 'BecarioController@subir_tarea');
+Route::get('becario/evaluacion/mis_proyectos', 'BecarioController@mis_proyectos');

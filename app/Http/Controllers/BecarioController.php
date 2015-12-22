@@ -11,6 +11,7 @@ use App\Http\Requests\AcademicaRequest;
 use App\Http\Requests\HabilidadRequest;
 use App\Http\Requests\UpdateProyectoRequest;
 use App\Http\Requests\RecursosRequest;
+use App\Http\Requests\TareaRequest;
 //
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
@@ -22,6 +23,11 @@ use App\Emergencia;
 use App\Academica;
 use App\Habilidad;
 use Auth;
+//Rekacion Becario / Proyecto
+use App\BP;
+// EVALUACIONES
+use App\Evaluacion;
+use App\Tarea;
 //Sin relaicon
 use App\Recurso;
 use App\Proyecto;
@@ -245,4 +251,59 @@ class BecarioController extends Controller
         return redirect('becario/proyectos/'.$proyecto->id.'/edit');
     }
 
+
+public function agregar_integrantes($id,Request $request){
+        $proyecto = Proyecto::find($id);
+        //0$int = $proyecto->integrantes;
+        $entradas = count($request->all());
+        for ($i=0; $i < $entradas; $i++) {
+            if ($request->input('integrante'.($proyecto->integrantes+($i+1)))) {
+                
+                //Busca al usuario en la tabla User
+                $user = User::where('carso',$request->input('integrante'.($proyecto->integrantes+($i+1))))->firstOrFail();
+                //crea el nuevo integrante con las relaciones
+                $int = $proyecto->integrantes;
+                $integrante[$i] = new BP();
+                $integrante[$i]->proyecto_id = $proyecto->id;
+                $integrante[$i]->becario_id = $user->becario->id;
+                $integrante[$i]->save();
+                
+                //Aumenta el contador de integrantes
+                $proyecto->integrantes = $int +1;
+                $proyecto->save();
+             } 
+        }
+        return redirect('becario/proyectos/'.$proyecto->id.'/edit');
+    }
+
+////////////////EVALUAICIONES
+
+    public function mis_tareas(){
+        $user = Auth::user();
+        $becario = Becario::where('user_id',$user->id)->first();
+        $activa = Evaluacion::where('becario_id',$becario->id)
+                                ->where('activa',1)
+                            ->first();
+        if($activa){
+             return view('Evaluacion/tareas',compact('activa'));
+        }
+        else{
+            $activa = false;
+            return view('Evaluacion/tareas',compact('activa'));
+        }
+    }
+
+    public function subir_tarea(TareaRequest $request){
+        $h = $request->input('horas');
+        $m = $request->input('minutos');
+        $tarea = new Tarea();
+        $tarea->evaluacion_id = $request->input('evaluacion_id');
+        $tarea->tarea = $request->input('tarea');
+        $tarea->proyecto = $request->input('proyecto');
+        $tarea->tipo = $request->input('tipo');
+        $tarea->descripcion = $request->input('descripcion');
+        $tarea->horas = $h.':'.$m;
+        $tarea->save();
+        return redirect('becario/evaluacion/mis_tareas');
+    }
 }

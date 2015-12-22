@@ -71,6 +71,50 @@
                 {!! Form::submit('Guardar Cambios',['class'=>'btn btn-max-margin']) !!}
                 </div>
                {!! Form::close() !!} 
+<!----- INTEGRANTES ---->
+
+
+                    <form class="form-group col-lg-12">
+                    <h4>Editar Integrantes</h4>
+                        <table id="fresh-table" class="table table-hover">
+                                <thead>
+                                    <th>ID CARSO</th>
+                                    <th>Nombre</th>
+                                    <th>Editar</th>
+                                </thead>
+                                <tbody>
+                        @foreach($proyecto->becarios as $becario)
+                                    <tr>
+                                        <td>{{ $becario->user->carso }}</td>
+                                        <td>{{ $becario->nombres}} {{ $becario->apellido_p}} {{ $becario->apellido_m}}</td>
+                                        <td></td>
+                                    </tr>
+                                    @endforeach
+                            </tbody>
+                        </table>
+                    </form>
+
+
+                @if($proyecto->integrantes < $proyecto->max_integrantes)
+                    {!! Form::model($proyecto->becarios,['class'=>'form-group col-lg-12','method' => 'PATCH','action'=>['BecarioController@agregar_integrantes',$proyecto->id]]) !!}
+
+                    <h4>Agregar Integrantes</h4>
+
+                    @for ($i = 0; $i < ($proyecto->max_integrantes-$proyecto->integrantes); $i++)
+                        <div class="between-form form-group">
+                                <label>Integrante {{ $proyecto->integrantes+($i+1) }}</label>
+                                <input type="text" class="form-control" id="integrante{{ $proyecto->integrantes+($i+1) }}" name="integrante{{ $proyecto->integrantes+($i+1) }}" placeholder="Integrante {{ $proyecto->integrantes+($i+1) }} ID">
+                            </div>
+                    @endfor              
+
+                    <div class="end-form form-group text-right">
+                    {!! Form::submit('Guardar Cambios',['class'=>'btn btn-max-margin']) !!}
+                    </div>
+                    {!! Form::close() !!}
+                @endif
+
+
+
 
 <!--------------------- RECURSOSS -->
                {!! Form::model($proyecto,['class'=>'form-group col-lg-12','method' => 'PATCH','files' => 'true','action'=>['BecarioController@subir_recursos',$proyecto->id]]) !!}

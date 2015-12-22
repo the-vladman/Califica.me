@@ -18,7 +18,7 @@ class Becario extends Model
      *
      * @var array
      */
-    protected $fillable = ['nombres','apellido_p','apellido_m','genero','area','sangre','descripcion','email','telefono'];
+    protected $fillable = ['nombres','cid','extras_total','inbursa','apellido_p','apellido_m','genero','area','sangre','descripcion','email','telefono'];
 
     /**
      * The attributes excluded from the model's JSON form.
@@ -26,9 +26,13 @@ class Becario extends Model
      * @var array
      */
 
-    protected $hidden = ['nombres','apellido_p','apellido_m','genero','area','sangre','fecha_ingreso','descripcion','email','telefono'];
+    protected $hidden = ['nombres','cid','extras_total','inbursa','apellido_p','apellido_m','genero','area','sangre','fecha_ingreso','descripcion','email','telefono'];
 
 
+    public function user()
+    {
+        return $this->belongsTo('App\User');
+    }
     public function proyectos()
     {
         return $this->belongsToMany('App\Proyecto','b_ps','becario_id','proyecto_id');
@@ -36,6 +40,10 @@ class Becario extends Model
 
     public function emergencia(){
         return $this->hasOne('App\Emergencia');
+    }
+
+    public function evaluaciones(){
+        return $this->hasMany('App\Evaluacion');
     }
 
     public function direccion(){

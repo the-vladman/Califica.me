@@ -68,10 +68,10 @@
                         </a>
                         <ul id="sub-menu">
                             <li  class=" text-center row-10">
-                                <a href="eva-personal.html">Personal</a>
+                                <a href="{{ url('/becario/evaluacion/mis_tareas') }}">Personal</a>
                             </li>
                             <li class=" text-center row-10">
-                                <a href="eva-projects.html">Equipo</a>
+                                <a href="{{ url('/becario/evaluacion/mis_proyectos') }}">Equipo</a>
                             </li>
                         </ul>
                     </li>
@@ -100,6 +100,7 @@
         @yield('perfil')
         @yield('becarios')
         @yield('proyectos')
+        @yield('evaluaciones')
 
         </div>
         <!-- END General Container -->
@@ -114,6 +115,7 @@
     <script src="/front/js/bootstrap-table.js"></script>
 
     @yield('js')
+    @yield('select')
 </body>
 
 </html>
