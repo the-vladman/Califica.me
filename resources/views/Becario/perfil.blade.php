@@ -14,10 +14,8 @@
                         </div>
                         <div class="col-md-7 ">
                             <h3>{{ $becario->nombres}} {{ $becario->apellido_p}} {{ $becario->apellido_m}}</h3>
-                            @foreach($becario->academicas as $escuela)
-                            <p><b>Carrera: </b>{{ $escuela->carrera}}</p> 
-                            <p><b>Universidad: </b>{{ $escuela->universidad}}</p>
-                            @endforeach 
+                            <p><b>Carrera: </b>{{ $becario->academicas->carrera}}</p> 
+                            <p><b>Universidad: </b>{{ $becario->academicas->universidad}}</p>
                             <p><b>Habilidades: </b>
                             {{ $becario->habilidades->habilidad}}
                             ...</p>

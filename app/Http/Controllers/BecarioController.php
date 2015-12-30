@@ -306,4 +306,22 @@ public function agregar_integrantes($id,Request $request){
         $tarea->save();
         return redirect('becario/evaluacion/mis_tareas');
     }
+
+    public function mis_proyectos(){
+        $user = Auth::user();
+        $becario = Becario::where('user_id',$user->id)->first();
+        return view('Evaluacion/proyectos',compact('user','becario'));
+    }
+
+    public function proyecto_integrantes($id){
+        $user = Auth::user();
+        $proyecto = Proyecto::find($id);
+        return view('Evaluacion/integrantes',compact('user','proyecto'));
+    }
+
+    public function preguntas($p,$i){
+        $id_proyecto = $p;
+        $integrante = Becario::find($i);
+        return view('Evaluacion/preguntas',compact('id_proyecto','integrante'));        
+    }
 }

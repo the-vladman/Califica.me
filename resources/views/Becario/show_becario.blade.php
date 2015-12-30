@@ -19,10 +19,8 @@
                                 <a><i class="icon-sobre icon-l"></i>{{ $becario->email }}</a>
                                 <a><i class="icon-d_proyectos icon-l"></i>{{ $becario->area }}</a>
                             </div>
-                            @foreach($becario->academicas as $escuela)
-                            <p><b>Carrera: </b>{{ $escuela->carrera}}</p> 
-                            <p><b>Universidad: </b>{{ $escuela->universidad}}</p>
-                            @endforeach 
+                            <p><b>Carrera: </b>{{ $becario->academicas->carrera}}</p> 
+                            <p><b>Universidad: </b>{{ $becario->academicas->universidad}}</p>
                             <p><b>Descripción: </b>{{ $becario->descripcion }} ...</p>
                         </div>
                     </section>

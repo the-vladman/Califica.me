@@ -51,7 +51,7 @@ class Becario extends Model
     }
 
     public function academicas(){
-        return $this->hasMany('App\Academica');
+        return $this->hasOne('App\Academica');
     }
 
     public function habilidades(){

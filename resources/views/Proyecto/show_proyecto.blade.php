@@ -31,9 +31,7 @@
                                 </div>
                                 <h5><small>{{ $becario->area }}</small></h5>
                                 <h5>{{ $becario->nombres }} {{ $becario->apellido_p }} {{ $becario->apellido_m }}</h5>
-                                @foreach($becario->academicas as $academica)
-                                <h5><small>{{ $academica->carrera }}</small></h5>
-                                @endforeach
+                                <h5><small>{{ $becario->academicas->carrera }}</small></h5>
                             </div>  
                         @endforeach  
 
