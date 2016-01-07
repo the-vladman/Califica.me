@@ -49,3 +49,4 @@ Route::post('becario/evaluacion/mis_tareas/t', 'BecarioController@subir_tarea');
 Route::get('becario/evaluacion/mis_proyectos', 'BecarioController@mis_proyectos');
 Route::get('becario/evaluacion/mis_proyectos/{id}', 'BecarioController@proyecto_integrantes');
 Route::get('becario/evaluacion/mis_proyectos/{p}/califica/{i}', 'BecarioController@preguntas');
+Route::post('becario/evaluacion/mis_proyectos/{p}/califica/{i}/c', 'BecarioController@calificar');

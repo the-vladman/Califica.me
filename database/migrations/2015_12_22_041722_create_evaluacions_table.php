@@ -27,6 +27,8 @@ class CreateEvaluacionsTable extends Migration
             $table->integer('colaboracion');
             $table->integer('proactividad');
             $table->integer('ensenanza');
+            $table->integer('popularidad');
+            //Bandera
             $table->integer('me_evaluo');
             $table->timestamps();
         });

@@ -324,4 +324,28 @@ public function agregar_integrantes($id,Request $request){
         $integrante = Becario::find($i);
         return view('Evaluacion/preguntas',compact('id_proyecto','integrante'));        
     }
+
+    public function calificar($p,$i,Request $request){
+        $id_proyecto = $p;
+        $integrante = Becario::find($i);
+        $activa = Evaluacion::where('becario_id',$integrante->id)
+                                ->where('activa',1)
+                            ->first();
+        $c = $activa->constancia;
+        $p = $activa->puntualidad;
+        $cl = $activa->colaboracion;
+        $pr = $activa->proactividad;
+        $e = $activa->ensenanza;
+        $me = $activa->me_evaluo;
+
+        $activa->constancia = $c + $request->input('constancia');
+        $activa->puntualidad = $p + $request->input('puntualidad');
+        $activa->colaboracion = $cl + $request->input('colaboracion');
+        $activa->proactividad = $pr + $request->input('proactividad');
+        $activa->ensenanza = $e + $request->input('ensenanza');
+        $activa->me_evaluo = $me + 1;
+        $activa->save();
+
+        return redirect('becario/evaluacion/mis_proyectos/'.$id_proyecto);
+    }
 }
