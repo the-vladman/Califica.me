@@ -336,6 +336,7 @@ public function agregar_integrantes($id,Request $request){
         $cl = $activa->colaboracion;
         $pr = $activa->proactividad;
         $e = $activa->ensenanza;
+        $po = $activa->popularidad;
         $me = $activa->me_evaluo;
 
         $activa->constancia = $c + $request->input('constancia');
@@ -343,6 +344,7 @@ public function agregar_integrantes($id,Request $request){
         $activa->colaboracion = $cl + $request->input('colaboracion');
         $activa->proactividad = $pr + $request->input('proactividad');
         $activa->ensenanza = $e + $request->input('ensenanza');
+        $activa->popularidad = $po + $request->input('popularidad');
         $activa->me_evaluo = $me + 1;
         $activa->save();
 
