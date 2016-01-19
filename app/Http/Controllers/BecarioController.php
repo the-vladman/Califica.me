@@ -161,20 +161,20 @@ class BecarioController extends Controller
         $carso = Proyecto::where('tipo','Carso')->get();
         $operacion = Proyecto::where('tipo','Operación CTIN')->get();
         //$becario = with('emergencia','direccion','academicas','habilidades');
-        return view('Proyecto/index',compact('user','ctin','carso','operacion'));
+        return view('Becario/Proyecto/index',compact('user','ctin','carso','operacion'));
 
     }
 
      public function show_proyecto($id){
         $user = Auth::user();
         $proyecto = Proyecto::find($id);
-        return view('Proyecto/show_proyecto',compact('user','proyecto'));
+        return view('Becario/Proyecto/show_proyecto',compact('user','proyecto'));
     }
 
     public function edit_proyecto($id){
         $user = Auth::user();
         $proyecto = Proyecto::find($id);
-        return view('Proyecto/edit_proyecto',compact('user','proyecto'));
+        return view('Becario/Proyecto/edit_proyecto',compact('user','proyecto'));
     }
 
     public function update_proyecto($id,UpdateProyectoRequest $request){
@@ -285,11 +285,11 @@ public function agregar_integrantes($id,Request $request){
                                 ->where('activa',1)
                             ->first();
         if($activa){
-             return view('Evaluacion/tareas',compact('activa'));
+             return view('Becario/Evaluacion/tareas',compact('activa'));
         }
         else{
             $activa = false;
-            return view('Evaluacion/tareas',compact('activa'));
+            return view('Becario/Evaluacion/tareas',compact('activa'));
         }
     }
 
@@ -310,19 +310,19 @@ public function agregar_integrantes($id,Request $request){
     public function mis_proyectos(){
         $user = Auth::user();
         $becario = Becario::where('user_id',$user->id)->first();
-        return view('Evaluacion/proyectos',compact('user','becario'));
+        return view('Becario/Evaluacion/proyectos',compact('user','becario'));
     }
 
     public function proyecto_integrantes($id){
         $user = Auth::user();
         $proyecto = Proyecto::find($id);
-        return view('Evaluacion/integrantes',compact('user','proyecto'));
+        return view('Becario/Evaluacion/integrantes',compact('user','proyecto'));
     }
 
     public function preguntas($p,$i){
         $id_proyecto = $p;
         $integrante = Becario::find($i);
-        return view('Evaluacion/preguntas',compact('id_proyecto','integrante'));        
+        return view('Becario/Evaluacion/preguntas',compact('id_proyecto','integrante'));        
     }
 
     public function calificar($p,$i,Request $request){

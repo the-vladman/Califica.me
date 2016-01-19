@@ -21,7 +21,7 @@ Route::get('register', 'LoginController@registrar');
 Route::post('register', 'LoginController@registrado');
 
 
-//BECARIO
+//::::::: BECARIO :::::::
 Route::get('becario/home', 'BecarioController@index');
 Route::get('becario/perfil', 'BecarioController@my_perfil');
 Route::get('becario/perfil/edit', 'BecarioController@my_perfil_edit');
@@ -50,3 +50,17 @@ Route::get('becario/evaluacion/mis_proyectos', 'BecarioController@mis_proyectos'
 Route::get('becario/evaluacion/mis_proyectos/{id}', 'BecarioController@proyecto_integrantes');
 Route::get('becario/evaluacion/mis_proyectos/{p}/califica/{i}', 'BecarioController@preguntas');
 Route::post('becario/evaluacion/mis_proyectos/{p}/califica/{i}/c', 'BecarioController@calificar');
+
+
+//::::::: ADMIN :::::::
+Route::get('admin/home', 'AdministradorController@index');
+
+
+//LISTA PROYECTOS
+Route::get('admin/proyectos', 'AdministradorController@list_proyectos');
+Route::post('admin/proyectos/alta', 'AdministradorController@alta_proyecto');
+Route::get('admin/proyectos/{id}', 'AdministradorController@show_proyecto');
+Route::get('admin/proyectos/{id}/edit', 'AdministradorController@edit_proyecto');
+Route::patch('admin/proyectos/{id}/edit/p', 'AdministradorController@update_proyecto');
+Route::patch('admin/proyectos/{id}/edit/r', 'AdministradorController@subir_recursos');
+Route::patch('admin/proyectos/{id}/edit/i', 'AdministradorController@agregar_integrantes');
