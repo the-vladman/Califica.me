@@ -55,6 +55,9 @@ Route::post('becario/evaluacion/mis_proyectos/{p}/califica/{i}/c', 'BecarioContr
 //::::::: ADMIN :::::::
 Route::get('admin/home', 'AdministradorController@index');
 
+//LISTA BECARIOS
+Route::get('admin/becario', 'AdministradorController@list_becarios');
+Route::get('admin/becario/{id}', 'AdministradorController@show_becario');
 
 //LISTA PROYECTOS
 Route::get('admin/proyectos', 'AdministradorController@list_proyectos');

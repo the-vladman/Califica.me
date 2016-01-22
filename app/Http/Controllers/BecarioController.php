@@ -143,7 +143,7 @@ class BecarioController extends Controller
 
         return redirect('becario/perfil/edit');
     }
-//////PROYECTOSSS
+//////Lsita Becarios
     public function list_becarios(){
         $user = Auth::user();
         $users = User::all();
@@ -154,7 +154,7 @@ class BecarioController extends Controller
         $becario = Becario::find($id);
         return view('Becario/show_becario',compact('user','becario'));
     }
-
+//////PROYECTOSSS
     public function list_proyectos(){
         $user = Auth::user();
         $ctin = Proyecto::where('tipo','CTIN')->get();

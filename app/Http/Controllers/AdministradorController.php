@@ -53,6 +53,18 @@ class AdministradorController extends Controller
     }
 
 
+//////Lsita Becarios
+    public function list_becarios(){
+        $user = Auth::user();
+        $users = User::all();
+        return view('Admin/Becario/list_becarios',compact('user','users'));
+    }
+    public function show_becario($id){
+        $user = Auth::user();
+        $becario = Becario::find($id);
+        return view('Admin/Becario/show_becario',compact('user','becario'));
+    }
+
 //////PROYECTOSSS
     public function list_proyectos(){
         $user = Auth::user();
