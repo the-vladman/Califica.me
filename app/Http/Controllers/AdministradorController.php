@@ -93,6 +93,25 @@ class AdministradorController extends Controller
             //Aumenta el contador de integrantes
             $proyecto->integrantes = $int +1;
             $proyecto->save();
+
+            //crear los recursos
+            $infografia = new Proyecto_archivo();
+            $infografia->proyecto_id = $proyecto->id;
+            $infografia->url_archivo = 'infografia'.$proyecto->id;
+            $infografia->save();
+            $presentacion = new Proyecto_archivo();
+            $presentacion->proyecto_id = $proyecto->id;
+            $presentacion->url_archivo = 'presentacion'.$proyecto->id;
+            $presentacion->save();            
+            $plan = new Proyecto_archivo();
+            $plan->proyecto_id = $proyecto->id;
+            $plan->url_archivo = 'plan'.$proyecto->id;
+            $plan->save();
+            $extra = new Proyecto_archivo();
+            $extra->proyecto_id = $proyecto->id;
+            $extra->url_archivo = 'extra'.$proyecto->id;
+            $extra->save();
+
         }
         return redirect('admin/proyectos');
     }
