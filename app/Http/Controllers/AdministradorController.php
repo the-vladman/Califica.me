@@ -11,6 +11,7 @@ use App\Http\Requests\AcademicaRequest;
 use App\Http\Requests\HabilidadRequest;
 use App\Http\Requests\UpdateProyectoRequest;
 use App\Http\Requests\NuevoProyectoRequest;
+use App\Http\Requests\NuevoBecarioRequest;
 use App\Http\Requests\RecursosRequest;
 use App\Http\Requests\TareaRequest;
 //
@@ -34,6 +35,7 @@ use App\Recurso;
 use App\Proyecto;
 use App\Proyecto_archivo;
 use Storage;
+use Carbon\Carbon;
 //use DB;
 //
 //
@@ -63,6 +65,47 @@ class AdministradorController extends Controller
         $user = Auth::user();
         $becario = Becario::find($id);
         return view('Admin/Becario/show_becario',compact('user','becario'));
+    }
+
+    public function alta_becario(NuevoBecarioRequest $request){
+        $usuario = new User();
+       $usuario->carso = $request->input('carso');
+       $usuario->activo = '1';
+       $usuario->rol = 'becario';
+       //$usuario->activo = $request->input('activo');
+       // $usuario->rol = $request->input('rol');
+       $usuario->password = bcrypt($request->input('carso'));
+       $usuario->save();
+       //crear becario
+       $becario = new Becario();
+       // Trabajando con la fecha actual
+      $date = Carbon::now();
+      $becario->user_id = $usuario->id;
+      $becario->nombres = $request->input('nombres');
+      $becario->apellido_p = $request->input('apellido_p');
+      $becario->apellido_m = $request->input('apellido_m');
+      $becario->url_img = 'user.png';
+      $becario->fecha_ingreso = $date->toDateString(); // Imprime una fecha en el formato día/mes/año
+      $becario->save();
+       //crear emergencia
+      $emergencia = new Emergencia();
+      $emergencia->becario_id = $becario->id;
+      $emergencia->save();
+       //crear direccion
+      $direccion = new Direccion();
+      $direccion->becario_id = $becario->id;
+      $direccion->save();
+       //crear academica
+      $academica = new Academica();
+      $academica->becario_id = $becario->id;
+      $academica->save();
+       //crear habilidad
+      $habilidad = new Habilidad();
+      $habilidad->becario_id = $becario->id;
+      $habilidad->save();
+      //crear evaluaciones
+      //checar como se va a crwear
+      return redirect('admin/becarios');
     }
 
 //////PROYECTOSSS

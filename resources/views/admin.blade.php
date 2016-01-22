@@ -90,13 +90,17 @@
         </div>
         <!-- END General Container -->
 
-    <!-- jQuery -->
+        <!-- jQuery -->
     <script src="/front/js/jquery.js"></script>
-    <!-- Bootstrap -->
-    <script src="/front/js/bootstrap.min.js"></script>
-
     <!-- rating js -->
     <script src="/front/js/rating.js"></script>
+    <!-- Bootstrap -->
+    <script src="/front/js/bootstrap.min.js"></script>
+    <!-- Bootstrap-table js -->
+    <script src="/front/js/bootstrap-table.js"></script>
+
+        
+
     <!-- Raphael js -->
     <script src="//cdnjs.cloudflare.com/ajax/libs/raphael/2.1.0/raphael-min.js"></script>
     <!-- Morris js -->

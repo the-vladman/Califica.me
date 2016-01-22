@@ -1,4 +1,4 @@
-@extends('admin')
+@extends('admin ')
 
 @section('becarios')
 
@@ -6,6 +6,65 @@
 <div class="general-info col-lg-8 col-lg-offset-2">
                     <h3>Directorio Becarios</h3>
  
+                    <section class="row center-around">
+
+                         <!-- Alta becario trigger modal -->
+                        <button type="button" class="btn xl-btn" data-toggle="modal" data-target="#AltaModal">
+                          <i class="icon-circulo_mas icon-l"></i>   Alta
+                        </button>
+
+                        <!-- Alta becario Modal -->
+                        <div class="modal fade" id="AltaModal" tabindex="-1" role="dialog" aria-labelledby="AltaModalLabel">
+                          <div class="modal-dialog" role="document">
+                            <div class="modal-content">
+                              <div class="modal-header">
+                                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+
+
+                                <h4 class="modal-title" id="AltaModalLabel">Alta Becario</h4>
+                              </div>
+                              {!! Form::open(['method' => 'POST','action'=>['AdministradorController@alta_becario']]) !!}
+
+                              <div class="modal-body form-group col-lg-12">
+                                    <div class="between-form form-group">
+                                        {!! Form::label('Nombre', 'Nombre(s)') !!}
+                                        {!! Form::text('nombres',null,['class'=>'form-control','placeholder'=>'Nombre del proyecto']) !!}
+                                    </div>
+                                    <div class="between-form form-group">
+                                        {!! Form::label('apellido_p', 'Apellido Paterno') !!}
+                                        {!! Form::text('apellido_p',null,['class'=>'form-control','placeholder'=>'Apellido Paterno']) !!}
+                                    </div>
+                                    <div class="between-form form-group">
+                                        {!! Form::label('apellido_m', 'Apellido Materno') !!}
+                                        {!! Form::text('apellido_m',null,['class'=>'form-control','placeholder'=>'Apellido Materno']) !!}
+                                    </div>
+
+                                    <div class="between-form form-group">
+                                        {!! Form::label('carso', 'Identificación del becario') !!}
+                                        {!! Form::text('carso',null,['class'=>'form-control','placeholder'=>'Número Tarjeta CARSO']) !!}
+                                    </div>
+
+                              </div>
+                              <div class="modal-footer">
+                                <button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
+
+                                {!! Form::submit('Alta Becario',['class'=>'btn btn-primary']) !!}
+                              </div>
+
+                              {!! Form::close() !!}
+                            </div>
+
+                          </div>
+                        </div>
+
+                        
+
+                    </section>
+
+
+
+
+
                     <table id="fresh-table" class="table table-hover">
                                 <thead>
                                     <th>Perfil</th>
@@ -13,7 +72,7 @@
                                     <th data-field="nombre" data-sortable="true">Nombre</th>
                                     <th data-field="area" data-sortable="true">Area</th>
                                     <th data-field="carrera" data-sortable="true">Activo</th>
-                                    <th data-field="promedio" data-sortable="true">%</th>
+                                    <th data-field="e-mail" data-sortable="true">%</th>
                                 </thead>
                                 <tbody>
                                 @foreach($users as $user)
