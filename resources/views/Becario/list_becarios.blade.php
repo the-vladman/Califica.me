@@ -16,10 +16,11 @@
                                     <th data-field="e-mail" data-sortable="true">E-mail</th>
                                 </thead>
                                 <tbody>
-                                @foreach($users as $user)
+                                    @foreach($users as $user)
+                                    @if($user->rol == 'becario')
                                     <tr>
                                         <td>
-                                            <a href="/becario/lista/{{ $user->becario->id }}"> 
+                                            <a href="/admin/becarios/{{ $user->becario->id }}"> 
                                                 <i class="icon-user icon-l"></i>
                                             </a>
                                         </td>
@@ -34,6 +35,7 @@
                                          <td>{{ $user->becario->email }}</td>
                                         
                                     </tr>
+                                    @endif
                                     @endforeach
                                 </tbody>
                     </table>

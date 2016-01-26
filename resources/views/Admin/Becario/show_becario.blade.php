@@ -32,7 +32,7 @@
                             <div class="img-general-link active">
                                 <div class="img-container progress-{{ $proyecto->progreso }}">
                                     <img class=" " src="/CTIN/proyectos/logos/{{ $proyecto->url_logo }}">
-                                    <a href="/becario/proyectos/{{ $proyecto->id }}"><span class="icon-d_proyectos"></span></a>
+                                    <a href="/admin/proyectos/{{ $proyecto->id }}"><span class="icon-d_proyectos"></span></a>
                                 </div>
                                 <h5> <small>{{ $proyecto->area }}</small> </h5>
                                 <h5>{{ $proyecto->nombre }}</h5>

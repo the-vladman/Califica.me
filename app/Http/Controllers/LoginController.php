@@ -41,13 +41,26 @@ class LoginController extends Controller
 
     public function acceso(LoginRequest $request){
          // Guardamos en un arreglo los datos del usuario.
-        $userdata = array(
+
+        if (Auth::attempt(array(
             'carso' => $request->input('carso'),
-            'password'=> $request->input('password')
-        );
-        if (Auth::attempt($userdata))
+            'password'=> $request->input('password'),
+            'activo' => 1,
+            'rol' => 'becario'
+            )
+          )
+          )
         {
             return redirect()->intended('becario/home');
+        }
+        elseif(Auth::attempt(array(
+            'carso' => $request->input('carso'),
+            'password'=> $request->input('password'),
+            'activo' => 1,
+            'rol' => 'administrativo'
+            )
+          )){
+            return redirect()->intended('admin/home'); 
         }
         else
         {

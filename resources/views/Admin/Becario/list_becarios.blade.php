@@ -57,7 +57,38 @@
                           </div>
                         </div>
 
-                        
+                        <!-- Baja Becario trigger modal -->
+                        <button type="button" class="btn xl-btn" data-toggle="modal" data-target="#BajaModal">
+                          <i class="icon-circulo_tache icon-l"></i>   Baja
+                        </button>
+
+                        <!-- Baja becario Modal -->
+                        <div class="modal fade" id="BajaModal" tabindex="-1" role="dialog" aria-labelledby="BajaModalLabel">
+                          <div class="modal-dialog" role="document">
+                            <div class="modal-content">
+                              <div class="modal-header">
+                                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                                <h4 class="modal-title" id="BajaModalLabel">Baja Becario</h4>
+                              </div>
+
+                              {!! Form::open(['method' => 'PUT','action'=>['AdministradorController@baja_becario']]) !!}
+
+
+                             <div class="between-form form-group">
+                                        {!! Form::label('carso', 'Identificación del becario') !!}
+                                        {!! Form::text('carso',null,['class'=>'form-control','placeholder'=>'Número Tarjeta CARSO']) !!}
+                                    </div>
+
+                              <div class="modal-footer">
+                                <button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
+                                {!! Form::submit('Baja Becario',['class'=>'btn btn-primary']) !!}
+                              </div>
+
+                              {!! Form::close() !!}
+                            </div>
+                          </div>
+                        </div>
+
 
                     </section>
 
@@ -76,6 +107,7 @@
                                 </thead>
                                 <tbody>
                                 @foreach($users as $user)
+                                    @if($user->rol == 'becario')
                                     <tr>
                                         <td>
                                             <a href="/admin/becarios/{{ $user->becario->id }}"> 
@@ -93,6 +125,7 @@
                                          <td>{{ $user->becario->email }}</td>
                                         
                                     </tr>
+                                    @endif
                                     @endforeach
                                 </tbody>
                     </table>

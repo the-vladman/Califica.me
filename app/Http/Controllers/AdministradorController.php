@@ -12,6 +12,7 @@ use App\Http\Requests\HabilidadRequest;
 use App\Http\Requests\UpdateProyectoRequest;
 use App\Http\Requests\NuevoProyectoRequest;
 use App\Http\Requests\NuevoBecarioRequest;
+use App\Http\Requests\BajaBecarioRequest;
 use App\Http\Requests\RecursosRequest;
 use App\Http\Requests\TareaRequest;
 //
@@ -106,6 +107,14 @@ class AdministradorController extends Controller
       //crear evaluaciones
       //checar como se va a crwear
       return redirect('admin/becarios');
+    }
+
+
+    public function baja_becario(BajaBecarioRequest $request){
+        $user = User::where('carso',$request->input('carso'))->firstOrFail();
+        $user->activo = '0';
+        $user->save();
+        return redirect('admin/becarios');
     }
 
 //////PROYECTOSSS

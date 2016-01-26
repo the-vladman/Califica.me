@@ -58,6 +58,7 @@ Route::get('admin/home', 'AdministradorController@index');
 //LISTA BECARIOS
 Route::get('admin/becarios', 'AdministradorController@list_becarios');
 Route::post('admin/becarios/a', 'AdministradorController@alta_becario');
+Route::put('admin/becarios/b', 'AdministradorController@baja_becario');
 Route::get('admin/becarios/{id}', 'AdministradorController@show_becario');
 
 //LISTA PROYECTOS
