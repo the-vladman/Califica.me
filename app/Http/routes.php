@@ -60,6 +60,15 @@ Route::get('admin/becarios', 'AdministradorController@list_becarios');
 Route::post('admin/becarios/a', 'AdministradorController@alta_becario');
 Route::put('admin/becarios/b', 'AdministradorController@baja_becario');
 Route::get('admin/becarios/{id}', 'AdministradorController@show_becario');
+Route::get('admin/becarios/{id}/editar', 'AdministradorController@editar_becario');
+//EDITAR BECARIO 
+Route::patch('admin/becarios/{id}/editar/n', 'AdministradorController@edit_n');
+Route::patch('admin/becarios/{id}/editar/d', 'AdministradorController@edit_d');
+Route::patch('admin/becarios/{id}/editar/e', 'AdministradorController@edit_e');
+Route::patch('admin/becarios/{id}/editar/a', 'AdministradorController@edit_a');
+Route::patch('admin/becarios/{id}/editar/h', 'AdministradorController@edit_h');
+Route::patch('admin/becarios/{id}/editar/p', 'AdministradorController@edit_p');
+
 
 //LISTA PROYECTOS
 Route::get('admin/proyectos', 'AdministradorController@list_proyectos');

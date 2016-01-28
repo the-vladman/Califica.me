@@ -15,6 +15,7 @@ use App\Http\Requests\NuevoBecarioRequest;
 use App\Http\Requests\BajaBecarioRequest;
 use App\Http\Requests\RecursosRequest;
 use App\Http\Requests\TareaRequest;
+use App\Http\Requests\CambioRequest;
 //
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
@@ -65,7 +66,10 @@ class AdministradorController extends Controller
     public function show_becario($id){
         $user = Auth::user();
         $becario = Becario::find($id);
-        return view('Admin/Becario/show_becario',compact('user','becario'));
+        $activa = Evaluacion::where('becario_id',$becario->id)
+                                ->where('activa',1)
+                            ->first();
+        return view('Admin/Becario/show_becario',compact('user','becario','activa'));
     }
 
     public function alta_becario(NuevoBecarioRequest $request){
@@ -106,10 +110,117 @@ class AdministradorController extends Controller
       $habilidad->save();
       //crear evaluaciones
       //checar como se va a crwear
+      $evaluacion = new Evaluacion();
+      $evaluacion->becario_id = $becario->id;
+      $evaluacion->start =$date->toDateString();
+      //Checar este pdo!!
+      $futuro = $date->addDays(15);
+      //
+      $evaluacion->end = $futuro->toDateString();
+      $evaluacion->activa = '1';
+      $evaluacion->save();
       return redirect('admin/becarios');
     }
 
+    public function editar_becario($id){
+        $user = Auth::user();
+        $becario = Becario::find($id);
+        $direccion = Direccion::where('becario_id',$becario->id)->first();
+        $emergencia = Emergencia::where('becario_id',$becario->id)->first();
+        $academica = Academica::where('becario_id',$becario->id)->first();
+        $habilidad = Habilidad::where('becario_id',$becario->id)->first();
+        return view('Admin/Becario/edit_becario',compact('user','becario','direccion','emergencia','academica','habilidad'));
+    }
 
+    ////
+       public function edit_n(PersonalRequest $request){
+        $id = $request->input('id_becario');
+        $becario = Becario::find($id);
+        //Se modifican los datos
+        $becario->nombres = $request->input('nombres');
+        $becario->apellido_p = $request->input('apellido_p');
+        $becario->apellido_m = $request->input('apellido_m');
+        $becario->telefono = $request->input('telefono');
+        $becario->email = $request->input('email');
+        $becario->descripcion = $request->input('descripcion');
+        $becario->sangre = $request->input('sangre');
+        $becario->genero = $request->input('genero');
+        $becario->area = $request->input('area');
+
+        if($request->file('imagen')){
+            $file = $request->file('imagen');
+            $nombre = 'becario'.$becario->id;
+            Storage::put('becarios/'.$nombre, \File::get($file));
+            $becario->url_img = $nombre;
+            $becario->save();   
+        }
+        else{
+            $becario->save();  
+        }
+        return redirect('admin/becarios/'.$becario->id.'/editar');
+    }
+
+
+    public function edit_d(DireccionRequest $request){
+        $id = $request->input('id_direccion');
+        $direccion = Direccion::find($id);
+        //Se modifican los datos
+        $direccion->calle = $request->input('calle');
+        $direccion->numero = $request->input('numero');
+        $direccion->CP = $request->input('CP');
+        $direccion->delegacion = $request->input('delegacion');
+        $direccion->estado = $request->input('estado');
+        $direccion->save();  
+
+        return redirect('admin/becarios/'.$direccion->becario_id.'/editar');
+    }
+
+    public function edit_e(EmergenciaRequest $request){
+        $id = $request->input('id_emergencia');
+        $emergencia = Emergencia::find($id);
+        //Se modifican los datos
+        $emergencia->nombre = $request->input('nombre');
+        $emergencia->apellido_p = $request->input('apellido_p');
+        $emergencia->apellido_m = $request->input('apellido_m');
+        $emergencia->telefono = $request->input('telefono');
+        $emergencia->save();  
+
+        return redirect('admin/becarios/'.$emergencia->becario_id.'/editar');
+    }
+
+    public function edit_a(AcademicaRequest $request){
+        $id = $request->input('id_academica');
+        $academica = Academica::find($id);
+        //Se modifican los datos
+        $academica->universidad = $request->input('universidad');
+        $academica->carrera = $request->input('carrera');
+        $academica->tipo = $request->input('tipo');
+        $academica->status = $request->input('status');
+        $academica->save();  
+
+        return redirect('admin/becarios/'.$academica->becario_id.'/editar');
+    }
+
+    public function edit_h(HabilidadRequest $request){
+        $id = $request->input('id_habilidad');
+        $habilidad = Habilidad::find($id);
+        //Se modifican los datos
+        $habilidad->habilidad = $request->input('habilidad');
+        $habilidad->save();  
+
+        return redirect('admin/becarios/'.$habilidad->becario_id.'/editar');
+    }
+
+    public function edit_p(CambioRequest $request){
+        $id = $request->input('usuario');
+        $usuario = User::find($id);
+        //Se modifican los datos
+        $usuario->password = bcrypt($request->input('password'));
+       $usuario->save(); 
+
+        return redirect('admin/becarios/'.$usuario->becario->id.'/editar');
+    }
+    ////
     public function baja_becario(BajaBecarioRequest $request){
         $user = User::where('carso',$request->input('carso'))->firstOrFail();
         $user->activo = '0';

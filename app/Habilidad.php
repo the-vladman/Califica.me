@@ -27,4 +27,11 @@ class Habilidad extends Model
      */
     protected $hidden = ['habilidad'];
 
+
+    public function becario()
+    {
+        return $this->belongsTo('App\Becario');
+    }
+
+    
 }

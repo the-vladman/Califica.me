@@ -27,5 +27,8 @@ class Emergencia extends Model
      */
     protected $hidden = ['nombre','apellido_p','apellido_m','telefono','created_at','updated_at'];
 
-
+public function becario()
+    {
+        return $this->belongsTo('App\Becario');
+    }
 }

@@ -26,5 +26,9 @@ class Direccion extends Model
      * @var array
      */
     protected $hidden = ['calle','numero','CP','delegacion','estado'];
-
+    
+    public function becario()
+    {
+        return $this->belongsTo('App\Becario');
+    }
 }

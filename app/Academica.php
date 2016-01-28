@@ -26,4 +26,11 @@ class Academica extends Model
      * @var array
      */
     protected $hidden = ['universidad','carrera','tipo','status'];
+
+    public function becario()
+    {
+        return $this->belongsTo('App\Becario');
+    }
+
+    
 }
