@@ -4,7 +4,7 @@ namespace App\Http\Requests;
 
 use App\Http\Requests\Request;
 
-class RecursosRequest extends Request
+class EquipoRequest extends Request
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -25,8 +25,9 @@ class RecursosRequest extends Request
     {
         return [
             //
-            'nombre' => 'required',
-            'archivo' => 'required'
+            'equipo' => 'required',
+            'serie' => 'required',
+            'ano' => 'required'
         ];
     }
 }

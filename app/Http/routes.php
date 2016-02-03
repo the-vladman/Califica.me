@@ -68,6 +68,12 @@ Route::patch('admin/becarios/{id}/editar/e', 'AdministradorController@edit_e');
 Route::patch('admin/becarios/{id}/editar/a', 'AdministradorController@edit_a');
 Route::patch('admin/becarios/{id}/editar/h', 'AdministradorController@edit_h');
 Route::patch('admin/becarios/{id}/editar/p', 'AdministradorController@edit_p');
+// :::: CONTENIDOS :::::
+Route::get('admin/contenido','AdministradorController@contenidos');
+Route::post('admin/contenido/n','AdministradorController@agregar_noticia');
+Route::post('admin/contenido/r','AdministradorController@agregar_recurso');
+Route::post('admin/contenido/t','AdministradorController@agregar_tarea');
+Route::post('admin/contenido/e','AdministradorController@agregar_equipo');
 
 
 //LISTA PROYECTOS

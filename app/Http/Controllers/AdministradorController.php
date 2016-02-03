@@ -14,6 +14,9 @@ use App\Http\Requests\NuevoProyectoRequest;
 use App\Http\Requests\NuevoBecarioRequest;
 use App\Http\Requests\BajaBecarioRequest;
 use App\Http\Requests\RecursosRequest;
+use App\Http\Requests\LaborRequest;
+use App\Http\Requests\NoticiaRequest;
+use App\Http\Requests\EquipoRequest;
 use App\Http\Requests\TareaRequest;
 use App\Http\Requests\CambioRequest;
 //
@@ -29,11 +32,16 @@ use App\Habilidad;
 use Auth;
 //Rekacion Becario / Proyecto
 use App\BP;
+//Rekacion Becario / Equipo
+use App\BE;
 // EVALUACIONES
 use App\Evaluacion;
 use App\Tarea;
 //Sin relaicon
 use App\Recurso;
+use App\Labor;
+use App\Noticia;
+use App\Equipo;
 use App\Proyecto;
 use App\Proyecto_archivo;
 use Storage;
@@ -56,6 +64,70 @@ class AdministradorController extends Controller
         return view('Admin/index');
     }
 
+// :::::::::::  Contenidos  :::::::::::
+
+    public function contenidos(){
+        $user = Auth::user();
+        $recursos = Recurso::all();
+        $labores = Labor::all();
+        $equipos = Equipo::all();
+        $noticias = Noticia::all();
+        return view('Admin/Contenido/index',compact('recursos','labores','equipos','noticias'));
+    }
+
+
+    public function agregar_recurso(RecursosRequest $request){
+        $recurso = new Recurso();
+        $recurso->nombre = $request->input('nombre');
+
+        $file = $request->file('archivo');
+        $extension = $request->file('archivo')->getClientOriginalExtension();
+        $nombre = $request->input('nombre').'.'.$extension;
+        Storage::put('recursos/'.$nombre, \File::get($file));
+        $recurso->url_recurso = $nombre;
+        $recurso->save();
+
+        return redirect('admin/contenido');
+    }
+
+    public function agregar_tarea(LaborRequest $request){
+        $labor = new Labor();
+        $labor->nombre = $request->input('nombre');
+        $labor->link = $request->input('link');
+        $labor->descripcion = $request->input('descripcion');
+        $labor->save();
+
+        return redirect('admin/contenido');
+    }
+
+
+    public function agregar_noticia(NoticiaRequest $request){
+        $noticia = new Noticia();
+        $noticia->titulo = $request->input('titulo');
+        $noticia->link = $request->input('link');
+        $noticia->descripcion = $request->input('text');
+
+        $file = $request->file('file-1');
+        $extension = $request->file('file-1')->getClientOriginalExtension();
+        $nombre = $request->input('titulo').'.'.$extension;
+        Storage::put('noticias/'.$nombre, \File::get($file));
+        $noticia->url_noticia = $nombre;
+        $noticia->save();
+
+
+        return redirect('admin/contenido');
+
+    }
+
+    public function agregar_equipo(EquipoRequest $request){
+        $equipo = new Equipo();
+        $equipo->equipo = $request->input('equipo');
+        $equipo->serie = $request->input('serie');
+        $equipo->ano = $request->input('ano');
+        $equipo->save();
+
+        return redirect('admin/contenido');
+    }
 
 //////Lsita Becarios
     public function list_becarios(){
