@@ -237,13 +237,13 @@
                         <div class="metrics-box">
                             <div class="metrics">
                                 <div class="data">
-                                    <span class="counter">200</span>
+                                    <span class="counter">{{$total}}</span>
                                 </div>
                                 <h5>Total Becarios</h5>
                             </div>
                             <div class="metrics">
                                 <div class="data">
-                                    <span class="counter">95</span>
+                                    <span class="counter">{{$a}}</span>
                                 </div>
                                 <h5>Becarios Activos</h5>
                             </div>
@@ -343,19 +343,19 @@
                         <div class="metrics-box">
                           <div class="metrics">
                               <div class="data">
-                                  <span class="counter">120</span>
+                                  <span class="counter">{{$tp}}</span>
                               </div>
                               <h5>Todos los Proyectos</h5>
                           </div>
                           <div class="metrics">
                               <div class="data">
-                                  <span class="counter">12</span>
+                                  <span class="counter">{{$pa}}</span>
                               </div>
                               <h5>Proyectos Activos</h5>
                           </div>
                           <div class="metrics">
                               <div class="data">
-                                  <span class="counter">30</span>
+                                  <span class="counter">{{$pt}}</span>
                               </div>
                               <h5>Proyectos Terminados</h5>
                           </div>
@@ -412,8 +412,8 @@
     Morris.Donut({
       element: 'genero',
       data: [
-      {value: 50, label: 'Hombres'},
-      {value: 50, label: 'Mujeres'}
+      {value: {{$h}}, label: 'Hombres'},
+      {value: {{$m}}, label: 'Mujeres'}
       ],
       backgroundColor: '#ccc',
       labelColor: '#424242',
@@ -427,10 +427,10 @@
     Morris.Donut({
       element: 'areas',
       data: [
-      {value: 30, label: 'Ing. Software'},
-      {value: 30, label: 'Ing. Hardware'},
-      {value: 30, label: 'Diseño'},
-      {value: 10, label: 'Sociales'}
+      {value: {{$s}}, label: 'Ing. Software'},
+      {value: {{$ha}}, label: 'Ing. Hardware'},
+      {value: {{$d}}, label: 'Diseño'},
+      {value: {{$so}}, label: 'Sociales'}
       ],
       backgroundColor: '#ccc',
       labelColor: '#424242',

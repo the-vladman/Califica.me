@@ -61,7 +61,27 @@ class AdministradorController extends Controller
 
     public function index(){
         $user = Auth::user();
-        return view('Admin/index');
+        // :::::::::::  Becarios  :::::::::::
+        $becarios = User::where('rol','becario')->get();
+        $activos = User::where('rol','becario')
+                        ->where('activo','1')
+                        ->get();
+        $mujeres=Becario::where('genero','femenino')->get();
+        $hombres=Becario::where('genero','masculino')->get();
+        $total = count($becarios);
+        $a = count($activos);
+        $m = (count($mujeres)*100)/$a;
+        $h = (count($hombres)*100)/$a;
+        $s= (count(Becario::where('area','software')->get())*100)/$a;
+        $ha= (count(Becario::where('area','hardware')->get())*100)/$a;
+        $d= (count(Becario::where('area','diseño')->get())*100)/$a;
+        $so= (count(Becario::where('area','social')->get())*100)/$a;
+
+        // :::::::::::  Proyectos  :::::::::::
+        $tp = count(Proyecto::all());
+        $pa =count(Proyecto::whereBetween('progreso',[1,99])->get());
+        $pt = count(Proyecto::where('progreso','100')->get());
+        return view('Admin/index',compact('user','total','a','m','h','s','ha','d','so','tp','pa','pt'));
     }
 
 // :::::::::::  Contenidos  :::::::::::
