@@ -30,6 +30,8 @@ Route::patch('becario/perfil/edit/d', 'BecarioController@edit_d');
 Route::patch('becario/perfil/edit/e', 'BecarioController@edit_e');
 Route::patch('becario/perfil/edit/a', 'BecarioController@edit_a');
 Route::patch('becario/perfil/edit/h', 'BecarioController@edit_h');
+Route::patch('becario/perfil/edit/p', 'BecarioController@edit_p');
+
 
 //LISTA BECARIOS
 Route::get('becario/lista', 'BecarioController@list_becarios');

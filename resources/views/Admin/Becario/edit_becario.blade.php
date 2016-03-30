@@ -90,7 +90,6 @@
                         </form>
                     </section>
 
-
                     <section class="row">
                     <!-- Form -->
                 {!! Form::model($direccion,['class'=>'form-group col-lg-12','method' => 'PATCH','action'=>['AdministradorController@edit_d']]) !!}

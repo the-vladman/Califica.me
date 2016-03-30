@@ -75,6 +75,23 @@
                         
                     </section>
 
+
+                    <section class="row">
+                        {!! Form::model($becario,['class'=>'form-group col-lg-12','method' => 'PATCH','action'=>['BecarioController@edit_p']]) !!}
+                            <h4>Contraseña</h4>
+                            <div class="between-form form-group">
+                                {!! Form::hidden('usuario',$user->id) !!}
+                                {!! Form::label('password', 'Nueva Contrasñea') !!}
+                                {!! Form::text('password',null,['class'=>'form-control']) !!}
+                            </div>
+                            <div class=" end-form form-group text-right">
+                                
+                {!! Form::submit('Actualizar Contraseña',['class'=>'btn btn']) !!}
+                            </div>
+                        </form>
+                    </section>
+
+
                     <section class="row">
                     <!-- Form -->
                 {!! Form::model($direccion,['class'=>'form-group col-lg-12','method' => 'PATCH','action'=>['BecarioController@edit_d']]) !!}

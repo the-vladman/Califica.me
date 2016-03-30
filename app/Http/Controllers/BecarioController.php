@@ -143,6 +143,17 @@ class BecarioController extends Controller
 
         return redirect('becario/perfil/edit');
     }
+
+     public function edit_p(CambioRequest $request){
+        $id = $request->input('usuario');
+        $usuario = User::find($id);
+        //Se modifican los datos
+        $usuario->password = bcrypt($request->input('password'));
+       $usuario->save(); 
+
+        return redirect('becario/perfil/edit');
+    }
+
 //////Lsita Becarios
     public function list_becarios(){
         $user = Auth::user();
