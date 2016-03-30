@@ -31,15 +31,21 @@
 
                 <!-- Page Heading -->
             <form class=" form-login text-center col-lg-6 col-sm-6" action="{{ url('/login') }}">
-                 <div class="img-general-link">
-                    <div class="img-container-s">
-                        <img class=" " src="http://www.ctinmx.com/wp-content/uploads/2015/04/11348643_10155609003690517_772603181_o-e1432759730895.jpg">
-                    </div>
-                    
-                    <h5>Madai te puede ayudar a restaurar tu contraseña</h5>
-                    <h5> :) </h5>
-                    <button type="submit" class="btn">Volver</button>
+
+            <div class="col-lg-6">
+                  <div class="img-general-link">
+                      <div class="img-container">
+                          <img class=" " src="/front/img/Madai.jpg">
+                      </div>
+                  </div>
                 </div>
+
+                <div class="col-lg-6 full-center">
+                  <h5 class="blanco" >Madai te puede ayudar a restaurar tu contraseña.</h5>
+                  <button type="submit" class="btn">Volver</button>
+                </div>
+
+                 
             </form>
                     
                 

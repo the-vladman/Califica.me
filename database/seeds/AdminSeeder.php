@@ -12,23 +12,26 @@ class AdminSeeder extends Seeder
     public function run()
     {
         //
-        /*DB::table('users')->insert([
+        
+
+        DB::table('users')->insert([
             'carso' => '00000000',
             'activo' => '1',
             'rol' => 'administrativo',
             'password' => bcrypt('CTINmx2016.'),
-        ]); */
+        ]);
         DB::table('users')->insert([
-            'carso' => '10000000',
+            'carso' => '40819',
             'activo' => '1',
             'rol' => 'administrativo',
             'password' => bcrypt('CTINmx2016.'),
         ]);
         DB::table('users')->insert([
-            'carso' => '20000000',
+            'carso' => '82011061',
             'activo' => '1',
             'rol' => 'administrativo',
             'password' => bcrypt('CTINmx2016.'),
         ]);
+        
     }
 }
