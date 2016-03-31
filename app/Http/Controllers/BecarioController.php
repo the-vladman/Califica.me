@@ -12,6 +12,7 @@ use App\Http\Requests\HabilidadRequest;
 use App\Http\Requests\UpdateProyectoRequest;
 use App\Http\Requests\RecursosRequest;
 use App\Http\Requests\TareaRequest;
+use App\Http\Requests\CambioRequest;
 //
 use App\Http\Requests;
 use App\Http\Controllers\Controller;

@@ -314,9 +314,13 @@ class AdministradorController extends Controller
     }
     ////
     public function baja_becario(BajaBecarioRequest $request){
+        $date = Carbon::now();
         $user = User::where('carso',$request->input('carso'))->firstOrFail();
         $user->activo = '0';
+        $becario = Becario::find($user->id);
+        $becario->fecha_egreso = $date->toDateString();
         $user->save();
+        $becario->save();
         return redirect('admin/becarios');
     }
 

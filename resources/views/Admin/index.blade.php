@@ -73,7 +73,7 @@
                                 <div class="winner-container">
                                     <div class="board-flip">
                                         <div class="board-front">
-                                            <img src="../img/user.png" alt="" />
+                                            <img src="/front/img/user.png" alt="" />
                                         </div>
                                         <div class="board-back">
                                             <div class="board-inner">
@@ -88,7 +88,7 @@
                                 <div class="winner-container">
                                     <div class="board-flip">
                                         <div class="board-front">
-                                            <img src="../img/user.png" alt="" />
+                                            <img src="/front/img/user.png" alt="" />
                                         </div>
                                         <div class="board-back">
                                             <div class="board-inner">
@@ -103,7 +103,7 @@
                                 <div class="winner-container">
                                     <div class="board-flip">
                                         <div class="board-front">
-                                            <img src="../img/user.png" alt="" />
+                                            <img src="/front/img/user.png" alt="" />
                                         </div>
                                         <div class="board-back">
                                             <div class="board-inner">
@@ -118,7 +118,7 @@
                                 <div class="winner-container">
                                     <div class="board-flip">
                                         <div class="board-front">
-                                            <img src="../img/user.png" alt="" />
+                                            <img src="/front/img/user.png" alt="" />
                                         </div>
                                         <div class="board-back">
                                             <div class="board-inner">
@@ -133,7 +133,7 @@
                                 <div class="winner-container">
                                     <div class="board-flip">
                                         <div class="board-front">
-                                            <img src="../img/user.png" alt="" />
+                                            <img src="/front/img/user.png" alt="" />
                                         </div>
                                         <div class="board-back">
                                             <div class="board-inner">
@@ -155,7 +155,7 @@
                                 <div class="winner-container">
                                     <div class="board-flip">
                                         <div class="board-front">
-                                            <img src="../img/user.png" alt="" />
+                                            <img src="/front/img/user.png" alt="" />
                                         </div>
                                         <div class="board-back">
                                             <div class="board-inner">
@@ -170,7 +170,7 @@
                                 <div class="winner-container">
                                     <div class="board-flip">
                                         <div class="board-front">
-                                            <img src="../img/user.png" alt="" />
+                                            <img src="/front/img/user.png" alt="" />
                                         </div>
                                         <div class="board-back">
                                             <div class="board-inner">
@@ -185,7 +185,7 @@
                                 <div class="winner-container">
                                     <div class="board-flip">
                                         <div class="board-front">
-                                            <img src="../img/user.png" alt="" />
+                                            <img src="/front/img/user.png" alt="" />
                                         </div>
                                         <div class="board-back">
                                             <div class="board-inner">
@@ -200,7 +200,7 @@
                                 <div class="winner-container">
                                     <div class="board-flip">
                                         <div class="board-front">
-                                            <img src="../img/user.png" alt="" />
+                                            <img src="/front/img/user.png" alt="" />
                                         </div>
                                         <div class="board-back">
                                             <div class="board-inner">
@@ -215,7 +215,7 @@
                                 <div class="winner-container">
                                     <div class="board-flip">
                                         <div class="board-front">
-                                            <img src="../img/user.png" alt="" />
+                                            <img src="/front/img/user.png" alt="" />
                                         </div>
                                         <div class="board-back">
                                             <div class="board-inner">

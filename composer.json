@@ -5,6 +5,7 @@
     "license": "MIT",
     "type": "project",
     "require": {
+        "doctrine/dbal": "v2.5.4",
         "laravelcollective/html": "5.1.*",
         "nesbot/carbon": "~1.18",
         "php": ">=5.5.9",

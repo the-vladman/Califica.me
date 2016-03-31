@@ -40,7 +40,7 @@
                                     </div>
 
                                     <div class="between-form form-group">
-                                        {!! Form::label('carso', 'Identificación del becario') !!}
+                                        {!! Form::label('carso', 'Número Tarjeta CARSO') !!}
                                         {!! Form::text('carso',null,['class'=>'form-control','placeholder'=>'Número Tarjeta CARSO']) !!}
                                     </div>
 
@@ -75,7 +75,7 @@
 
 
                              <div class="between-form form-group">
-                                        {!! Form::label('carso', 'Identificación del becario') !!}
+                                        {!! Form::label('carso', 'Número de Identificación del becario (ID CARSO)') !!}
                                         {!! Form::text('carso',null,['class'=>'form-control','placeholder'=>'Número Tarjeta CARSO']) !!}
                                     </div>
 
