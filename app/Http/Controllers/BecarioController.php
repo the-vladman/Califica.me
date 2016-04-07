@@ -41,6 +41,7 @@ class BecarioController extends Controller
     //
     public function __construct(){
         $this->middleware('auth');
+        $this->middleware('becario');
     }
 
     public function index(){

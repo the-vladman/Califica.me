@@ -24,23 +24,23 @@ use App\Http\Requests\RegisterRequest;
 class LoginController extends Controller
 {   //
   public function redir(){
-    if(Auth::check()){
-       // Si está autenticado lo mandamos a la raíz donde estara el mensaje de bienvenida.
-            return redirect()->intended('becario/home');
-    }
-
-    else{
       return redirect()->intended('login');
-    }
-
   }
 
   public function login(){
         // Verificamos que el usuario no esté autenticado
         if (Auth::check())
         {
-            // Si está autenticado lo mandamos a la raíz donde estara el mensaje de bienvenida.
+          $user = Auth::user();
+          if($user->rol == 'becario'){
+            // Si está autenticado lo mandamos a la raíz donde estara el mensaje e bienvenida.
             return redirect()->intended('becario/home');
+          }
+          elseif ($user->rol == 'administrativo') {
+            # code...
+            return redirect()->intended('admin/home');
+          }
+            
         }
         // Mostramos la vista login.blade.php (Recordemos que .blade.php se omite.)
         return \View::make('Login/login');

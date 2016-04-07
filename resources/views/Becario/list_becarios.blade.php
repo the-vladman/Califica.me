@@ -18,9 +18,9 @@
                                 <tbody>
                                     @foreach($users as $user)
                                     @if($user->rol == 'becario')
-                                    <tr>
+                                    <tr class="clickable-row" data-href="/becario/lista/{{ $user->becario->id }}">
                                         <td>
-                                            <a href="/admin/becarios/{{ $user->becario->id }}"> 
+                                            <a> 
                                                 <i class="icon-user icon-l"></i>
                                             </a>
                                         </td>
@@ -46,6 +46,8 @@
 
 @section('js')
 <!-- Table script -->
+
+
 <script type="text/javascript">
         var $table = $('#fresh-table'),
             full_screen = false;

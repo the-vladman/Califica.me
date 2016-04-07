@@ -109,9 +109,9 @@
                                 <tbody>
                                 @foreach($users as $user)
                                     @if($user->rol == 'becario')
-                                    <tr>
+                                    <tr class="clickable-row" data-href="/admin/becarios/{{ $user->becario->id }}">
                                         <td>
-                                            <a href="/admin/becarios/{{ $user->becario->id }}"> 
+                                            <a> 
                                                 <i class="icon-user icon-l"></i>
                                             </a>
                                         </td>

@@ -15,6 +15,7 @@
     <link href="/front/css/bootstrap.min.css" rel="stylesheet">
     <!-- Custom CSS -->
     <link href="/front/css/ctin.css" rel="stylesheet">
+    <link rel="shortcut icon" href="/front/img/icon.png">
 
 </head>
 

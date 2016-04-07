@@ -22,6 +22,8 @@
     <!-- Morris CSS -->
     <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/morris.js/0.5.1/morris.css">
 
+    <link rel="shortcut icon" href="{{ asset('/front/img/icon.png') }}">
+
 </head>
 
 <body class="container">
@@ -98,6 +100,9 @@
     <script src="/front/js/bootstrap.min.js"></script>
     <!-- Bootstrap-table js -->
     <script src="/front/js/bootstrap-table.js"></script>
+    
+    <!-- selectRow js -->
+ <script src="/front/js/slectRow.js"></script>
 
         
 

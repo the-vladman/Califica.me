@@ -19,7 +19,7 @@
     <link href="/front/css/ctin.css" rel="stylesheet">
     <!-- Custom Fonts -->
     <link href="/front/fonts/IconsCTIN/iconsCTIN.css" rel="stylesheet" type="text/css">
-
+        <link rel="shortcut icon" href="{{ asset('/front/img/icon.png') }}">
 
 </head>
 
@@ -113,6 +113,9 @@
     <script src="/front/js/bootstrap.min.js"></script>
     <!-- Bootstrap-table js -->
     <script src="/front/js/bootstrap-table.js"></script>
+
+    <!-- selectRow js -->
+ <script src="/front/js/slectRow.js"></script>
 
     @yield('js')
     @yield('select')
