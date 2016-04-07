@@ -23,8 +23,19 @@ use App\Http\Requests\RegisterRequest;
 
 class LoginController extends Controller
 {   //
+  public function redir(){
+    if(Auth::check()){
+       // Si está autenticado lo mandamos a la raíz donde estara el mensaje de bienvenida.
+            return redirect()->intended('becario/home');
+    }
 
-        public function login(){
+    else{
+      return redirect()->intended('login');
+    }
+
+  }
+
+  public function login(){
         // Verificamos que el usuario no esté autenticado
         if (Auth::check())
         {
@@ -33,7 +44,7 @@ class LoginController extends Controller
         }
         // Mostramos la vista login.blade.php (Recordemos que .blade.php se omite.)
         return \View::make('Login/login');
-    }
+      }
 
     public function olvide(){
         return \View::make('Login/olvide');

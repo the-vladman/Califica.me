@@ -11,6 +11,7 @@
 |
 */
 
+Route::get('/', 'LoginController@redir');
 Route::get('login', 'LoginController@login');
 Route::get('olvide', 'LoginController@olvide');
 Route::post('login', 'LoginController@acceso');
