@@ -49,6 +49,7 @@ Route::patch('becario/proyectos/{id}/edit/i', 'BecarioController@agregar_integra
 /// EVALUACION
 Route::get('becario/evaluacion/mis_tareas', 'BecarioController@mis_tareas');
 Route::post('becario/evaluacion/mis_tareas/t', 'BecarioController@subir_tarea');
+Route::delete('becario/evaluacion/mis_tareas/{id}/b', 'BecarioController@borrar_tarea');
 Route::get('becario/evaluacion/mis_proyectos', 'BecarioController@mis_proyectos');
 Route::get('becario/evaluacion/mis_proyectos/{id}', 'BecarioController@proyecto_integrantes');
 Route::get('becario/evaluacion/mis_proyectos/{p}/califica/{i}', 'BecarioController@preguntas');
@@ -87,3 +88,4 @@ Route::get('admin/proyectos/{id}/edit', 'AdministradorController@edit_proyecto')
 Route::patch('admin/proyectos/{id}/edit/p', 'AdministradorController@update_proyecto');
 Route::patch('admin/proyectos/{id}/edit/r', 'AdministradorController@subir_recursos');
 Route::patch('admin/proyectos/{id}/edit/i', 'AdministradorController@agregar_integrantes');
+Route::delete('admin/proyectos/{proyecto}/edit/i/{becario}', 'AdministradorController@quitar_integrante');

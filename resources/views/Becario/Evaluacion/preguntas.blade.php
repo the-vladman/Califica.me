@@ -26,7 +26,7 @@
                                 </div>
                                 <div class="board-back">
                                     <div class="board-inner">
-                                        <h5><small>{{ $inetgrante->area }}</small></h5>
+                                        <h5><small>{{ $integrante->area }}</small></h5>
                                         <h5>{{ $integrante->nombres }} {{ $integrante->apellido_p }} {{ $integrante->apellido_m }}</h5>
                                         <h5><small>{{ $integrante->area }}</small></h5>
                                         <fieldset class="rating" data-rate ="6"></fieldset>  

@@ -320,6 +320,12 @@ public function agregar_integrantes($id,Request $request){
         return redirect('becario/evaluacion/mis_tareas');
     }
 
+    public function borrar_tarea($id){
+        $tarea = Tarea::find($id);
+        $tarea->delete();
+        return redirect('becario/evaluacion/mis_tareas');
+    }
+
     public function mis_proyectos(){
         $user = Auth::user();
         $becario = Becario::where('user_id',$user->id)->first();

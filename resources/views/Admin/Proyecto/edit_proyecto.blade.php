@@ -50,7 +50,7 @@
                  
                  <div class="between-form form-group">
                  {!! Form::label('start','Fecha de Inicio') !!}
-                 <h6>{{ $proyecto->start }}</h6>
+                 {!! Form::date('start',null,['class'=>'form-control']) !!}
                  </div>
                 
                 <div class="between-form form-group">
@@ -87,7 +87,11 @@
                                     <tr>
                                         <td>{{ $becario->user->carso }}</td>
                                         <td>{{ $becario->nombres}} {{ $becario->apellido_p}} {{ $becario->apellido_m}}</td>
-                                        <td></td>
+                                        <td>
+                                            {!! Form::open(['method'  => 'DELETE','action' =>['AdministradorController@quitar_integrante',$proyecto->id,$becario->id]]) !!}
+                        {!! Form::submit('X',['class'=>'btn']) !!}
+                        {!! Form::close() !!}
+                                        </td>
                                     </tr>
                                     @endforeach
                             </tbody>

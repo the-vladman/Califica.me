@@ -89,12 +89,18 @@
                                         <td>{{ $tarea->proyecto }}</td>
                                         <td>{{ $tarea->tipo }}</td>
                                         <td class="text-center">
+                                        <!-- 
                                             <a href="becario-simple.html" data-toggle="tooltip"  title="Editar"> 
                                                 <i class="icon-circulo_editar icon-l"></i>
                                             </a>
-                                            <a href="becario-simple.html" data-toggle="tooltip" title="Eliminar"> 
+                                            -->
+                                             {!! Form::open(['method'  => 'DELETE','action' =>['BecarioController@borrar_tarea',$tarea->id]]) !!}
+                        {!! Form::submit('X',['class'=>'btn btn-sm']) !!}
+                        {!! Form::close() !!} <!-- 
+>                                            <a href="becario-simple.html" data-toggle="tooltip" title="Eliminar"> 
                                                 <i class="icon-circulo_tache icon-l"></i>
                                             </a>
+                                            -->
                                          </td>
                                         
                                     </tr>

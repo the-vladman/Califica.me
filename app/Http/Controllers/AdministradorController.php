@@ -345,6 +345,7 @@ class AdministradorController extends Controller
     public function alta_proyecto(NuevoProyectoRequest $request){
         
         if($request){
+            $date = Carbon::now();
             $proyecto = new Proyecto();
             $in = $request->input('integrante');
             $proyecto->nombre = $request->input('proyecto');
@@ -352,6 +353,7 @@ class AdministradorController extends Controller
             $proyecto->max_integrantes = $request->input('maximo');
             $proyecto->tipo = $request->input('tipo');
             $proyecto->area = $request->input('area');
+            $proyecto->start = $date->toDateString();
             $proyecto->save();
             //Busca al usuario en la tabla User
             $user = User::where('carso',$in)->firstOrFail();
@@ -401,6 +403,7 @@ class AdministradorController extends Controller
         $proyecto->progreso = $request->input('progreso');
         $proyecto->tipo = $request->input('tipo');
         $proyecto->area = $request->input('area');
+        $proyecto->start = $request->input('start');
         $proyecto->end = $request->input('end');
         $proyecto->descripcion = $request->input('descripcion');
 
@@ -494,4 +497,17 @@ public function agregar_integrantes($id,Request $request){
         return redirect('admin/proyectos/'.$proyecto->id.'/edit');
     }
 
+
+    public function quitar_integrante($p,$b){
+        $becario = Becario::find($b);
+        $proyecto = Proyecto::find($p);
+        $int = $proyecto->integrantes;
+        $proyecto->integrantes = $int - 1;
+        $proyecto->save();
+        $relacion = BP::where('becario_id',$becario->id)
+                                ->where('proyecto_id',$proyecto->id)
+                            ->first();
+        $relacion->delete();
+        return redirect('admin/proyectos/'.$proyecto->id.'/edit');
+    }
 }
