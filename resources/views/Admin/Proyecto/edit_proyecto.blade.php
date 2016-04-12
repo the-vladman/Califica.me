@@ -85,11 +85,11 @@
                                 <tbody>
                         @foreach($proyecto->becarios as $becario)
                                     <tr>
-                                        <td>{{ $becario->user->carso }}</td>
+                                        <td>{{ $becario->id }}</td>
                                         <td>{{ $becario->nombres}} {{ $becario->apellido_p}} {{ $becario->apellido_m}}</td>
                                         <td>
                                             {!! Form::open(['method'  => 'DELETE','action' =>['AdministradorController@quitar_integrante',$proyecto->id,$becario->id]]) !!}
-                        {!! Form::submit('X',['class'=>'btn']) !!}
+                        {!! Form::submit('X',['class'=>'btn btn-sm']) !!}
                         {!! Form::close() !!}
                                         </td>
                                     </tr>

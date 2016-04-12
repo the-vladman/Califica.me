@@ -499,15 +499,14 @@ public function agregar_integrantes($id,Request $request){
 
 
     public function quitar_integrante($p,$b){
-        $becario = Becario::find($b);
         $proyecto = Proyecto::find($p);
+        $relacion = BP::where('becario_id',$b)
+                    ->where('proyecto_id',$p)
+                            ->first();
+        $relacion->delete();
         $int = $proyecto->integrantes;
         $proyecto->integrantes = $int - 1;
         $proyecto->save();
-        $relacion = BP::where('becario_id',$becario->id)
-                                ->where('proyecto_id',$proyecto->id)
-                            ->first();
-        $relacion->delete();
         return redirect('admin/proyectos/'.$proyecto->id.'/edit');
     }
 }
