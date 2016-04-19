@@ -117,17 +117,6 @@
                             
                           </div>
 
-
-
-
-                          
-
-
-
-
-
-
-
                           <div role="tabpanel" class="tab-pane" id="Recursos">
                             <h3>Recursos</h3>
                             <table class="data-table">

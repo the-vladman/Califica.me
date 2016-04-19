@@ -71,8 +71,10 @@
                 {!! Form::submit('Guardar Cambios',['class'=>'btn btn-max-margin']) !!}
                 </div>
                {!! Form::close() !!} 
-<!----- INTEGRANTES ---->
 
+
+
+<!----- INTEGRANTES ---->
 
                     <form class="form-group col-lg-12">
                     <h4>Editar Integrantes</h4>

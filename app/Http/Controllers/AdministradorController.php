@@ -61,6 +61,16 @@ class AdministradorController extends Controller
     }
 
     public function index(){
+        $today = Carbon::today();
+        if ($today->day < 15) {
+            $inicio = $today->firstOfMonth();
+            $futuro = $inicio->addDays(14);
+        }
+        else{
+            $futuro = $today->lastOfMonth();
+        }
+        $noticias = Noticia::where('fin',$futuro)->get();
+
         $user = Auth::user();
         // :::::::::::  Becarios  :::::::::::
         $becarios = User::where('rol','becario')->get();
@@ -82,7 +92,7 @@ class AdministradorController extends Controller
         $tp = count(Proyecto::all());
         $pa =count(Proyecto::whereBetween('progreso',[1,99])->get());
         $pt = count(Proyecto::where('progreso','100')->get());
-        return view('Admin/index',compact('user','total','a','m','h','s','ha','d','so','tp','pa','pt'));
+        return view('Admin/index',compact('user','noticias','total','a','m','h','s','ha','d','so','tp','pa','pt'));
     }
 
 // :::::::::::  Contenidos  :::::::::::
@@ -112,10 +122,21 @@ class AdministradorController extends Controller
     }
 
     public function agregar_tarea(LaborRequest $request){
+        $today = Carbon::today();
         $labor = new Labor();
         $labor->nombre = $request->input('nombre');
         $labor->link = $request->input('link');
         $labor->descripcion = $request->input('descripcion');
+
+        if ($today->day < 15) {
+            $inicio = $today->firstOfMonth();
+            $futuro = $inicio->addDays(14);
+        }
+        else{
+            $futuro = $today->lastOfMonth();
+        }
+
+        $labor->fin = $futuro;
         $labor->save();
 
         return redirect('admin/contenido');
@@ -123,10 +144,20 @@ class AdministradorController extends Controller
 
 
     public function agregar_noticia(NoticiaRequest $request){
+        $today = Carbon::today();
         $noticia = new Noticia();
         $noticia->titulo = $request->input('titulo');
         $noticia->link = $request->input('link');
         $noticia->descripcion = $request->input('text');
+
+        if ($today->day < 15) {
+            $inicio = $today->firstOfMonth();
+            $futuro = $inicio->addDays(14);
+        }
+        else{
+            $futuro = $today->lastOfMonth();
+        }
+        $noticia->fin = $futuro;
 
         $file = $request->file('file-1');
         $extension = $request->file('file-1')->getClientOriginalExtension();
@@ -177,7 +208,7 @@ class AdministradorController extends Controller
        //crear becario
        $becario = new Becario();
        // Trabajando con la fecha actual
-      $date = Carbon::now();
+      $date = Carbon::today();
       $becario->user_id = $usuario->id;
       $becario->nombres = $request->input('nombres');
       $becario->apellido_p = $request->input('apellido_p');
@@ -207,9 +238,28 @@ class AdministradorController extends Controller
       $evaluacion->becario_id = $becario->id;
       $evaluacion->start =$date->toDateString();
       //Checar este pdo!!
-      $futuro = $date->addDays(15);
+      
+      if ($date->day < 15) {
+        $inicio = $date->firstOfMonth();
+        $futuro = $inicio->addDays(14);
+      }
+      else{
+        $futuro = $date->lastOfMonth();
+      }
+
+      if($futuro->dayOfWeek === Carbon::SATURDAY){
+        $fin = $futuro->addDays(2);
+      }
+      elseif($futuro->dayOfWeek === Carbon::SUNDAY) {
+        $fin = $futuro->addDays(1);
+      }
+      else{
+        $fin = $futuro;
+      }
+      //echo($futuro->dayOfWeek);
       //
-      $evaluacion->end = $futuro->toDateString();
+      $evaluacion->end = $fin;
+      //$evaluacion->constancia = $futuro->dayOfWeek;
       $evaluacion->activa = '1';
       $evaluacion->save();
       return redirect('admin/becarios');

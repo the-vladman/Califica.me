@@ -7,65 +7,33 @@
 
                 <div class="general-info col-sm-10 col-sm-offset-1">
 
+            @if($noticias)
                     <section class="row">
                         <div class="center text-center">
-
+                        @foreach($noticias as $noticia)
                             <div class="board-container">
                                 <div class="board-flip">
                                     <div class="board-front">
-                                        <img src="http://placehold.it/250x300" alt="" />
+                                        <img src="/CTIN/noticias/{{$noticia->url_noticia}}" alt="" />
                                     </div>
                                     <div class="board-back">
                                         <div class="board-inner">
-                                            <h1>Board title</h1>
-                                            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aliquid tempora fuga, quos quas vitae. Autem beatae ipsam consequatur nulla placeat, consequuntur, possimus aliquid sunt. Corrupti, nam minus aspernatur eius nemo.</p>
+                                            <h1>{{ $noticia->titulo }}</h1>
+                                            <p>{{ $noticia->descripcion }}</p>
+                                            <a href="{!! $noticia->link !!}" target="_blank">
+                                                <i class="icon-link icon-xl"></i>
+                                            </a>
                                         </div>
                                     </div>
                                 </div>
                             </div>
-                            <div class="board-container">
-                                <div class="board-flip">
-                                    <div class="board-front">
-                                        <img src="http://placehold.it/250x300" alt="" />
-                                    </div>
-                                    <div class="board-back">
-                                        <div class="board-inner">
-                                            <h1>Board title</h1>
-                                            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aliquid tempora fuga, quos quas vitae. Autem beatae ipsam consequatur nulla placeat, consequuntur, possimus aliquid sunt. Corrupti, nam minus aspernatur eius nemo.</p>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="board-container">
-                                <div class="board-flip">
-                                    <div class="board-front">
-                                        <img src="http://placehold.it/250x300" alt="" />
-                                    </div>
-                                    <div class="board-back">
-                                        <div class="board-inner">
-                                            <h1>Board title</h1>
-                                            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aliquid tempora fuga, quos quas vitae. Autem beatae ipsam consequatur nulla placeat, consequuntur, possimus aliquid sunt. Corrupti, nam minus aspernatur eius nemo.</p>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="board-container">
-                                <div class="board-flip">
-                                    <div class="board-front">
-                                        <img src="http://placehold.it/250x300" alt="" />
-                                    </div>
-                                    <div class="board-back">
-                                        <div class="board-inner">
-                                            <h1>Board title</h1>
-                                            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aliquid tempora fuga, quos quas vitae. Autem beatae ipsam consequatur nulla placeat, consequuntur, possimus aliquid sunt. Corrupti, nam minus aspernatur eius nemo.</p>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-
-
+                        @endforeach
                         </div>
                     </section>
+            @endif
+                
+
+
                     <section class="row">
                         <h3>Los 10 Mejores</h3>
                         <div class="center">

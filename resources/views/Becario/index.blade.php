@@ -1,67 +1,63 @@
 @extends('becario')
 
 @section('home')
-<div class="general-info col-sm-10 col-sm-offset-1">
 
+
+<div class="general-info col-sm-10 col-sm-offset-1">
+            @if($noticias)
                     <section class="row">
                         <div class="center text-center">
-
+                        @foreach($noticias as $noticia)
                             <div class="board-container">
                                 <div class="board-flip">
                                     <div class="board-front">
-                                        <img src="http://placehold.it/250x300" alt="" />
+                                        <img src="/CTIN/noticias/{{$noticia->url_noticia}}" alt="" />
                                     </div>
                                     <div class="board-back">
                                         <div class="board-inner">
-                                            <h1>Board title</h1>
-                                            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aliquid tempora fuga, quos quas vitae. Autem beatae ipsam consequatur nulla placeat, consequuntur, possimus aliquid sunt. Corrupti, nam minus aspernatur eius nemo.</p>
+                                            <h1>{{ $noticia->titulo }}</h1>
+                                            <p>{{ $noticia->descripcion }}</p>
+                                            <a href="{!! $noticia->link !!}" target="_blank">
+                                                <i class="icon-link icon-xl"></i>
+                                            </a>
                                         </div>
                                     </div>
                                 </div>
                             </div>
-                            <div class="board-container">
-                                <div class="board-flip">
-                                    <div class="board-front">
-                                        <img src="http://placehold.it/250x300" alt="" />
-                                    </div>
-                                    <div class="board-back">
-                                        <div class="board-inner">
-                                            <h1>Board title</h1>
-                                            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aliquid tempora fuga, quos quas vitae. Autem beatae ipsam consequatur nulla placeat, consequuntur, possimus aliquid sunt. Corrupti, nam minus aspernatur eius nemo.</p>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="board-container">
-                                <div class="board-flip">
-                                    <div class="board-front">
-                                        <img src="http://placehold.it/250x300" alt="" />
-                                    </div>
-                                    <div class="board-back">
-                                        <div class="board-inner">
-                                            <h1>Board title</h1>
-                                            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aliquid tempora fuga, quos quas vitae. Autem beatae ipsam consequatur nulla placeat, consequuntur, possimus aliquid sunt. Corrupti, nam minus aspernatur eius nemo.</p>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="board-container">
-                                <div class="board-flip">
-                                    <div class="board-front">
-                                        <img src="http://placehold.it/250x300" alt="" />
-                                    </div>
-                                    <div class="board-back">
-                                        <div class="board-inner">
-                                            <h1>Board title</h1>
-                                            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aliquid tempora fuga, quos quas vitae. Autem beatae ipsam consequatur nulla placeat, consequuntur, possimus aliquid sunt. Corrupti, nam minus aspernatur eius nemo.</p>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                           
-                           
+                        @endforeach
                         </div>
                     </section>
+            @endif
+
+
+            @if(count($tareas)>0)
+                    <section class=" row">
+                            <h3>Tareas</h3>
+                            <div class="col-lg-12 center-around">
+
+                              <div class="time-out">
+                                  <i class="icon-calendario"></i>
+                                  <p > LA SIGUIENTE EVALUACIÓN SE REALIZARÁ LOS DÍAS 1 Y 2 DE ENERO. </p>
+                              </div>
+                        @foreach($tareas as $tarea)
+                                <div class="homework">
+                                    <div class="top-img">
+                                        <div class="img-general-link">
+                                          <div class="img-general-link">
+                                              <div class="img-container-s">
+                                                  <p>{{ $tarea->nombre }}</p>
+                                                  <a href="{{ $tarea->link }}" ><span class="icon-recursos"></span></a>
+                                              </div>
+                                          </div>
+                                        </div>
+                                    </div>
+                                    <p class="col-sm-6" >{{ $tarea->descripcion}}</p>
+                                </div>
+                        @endforeach
+                            </div>
+                        </section>
+            @endif
+
                     <section class="row">
                         <h3>Desempeño</h3>
                         <div class="center">
@@ -144,6 +140,8 @@
                             </div>
                         </div>
                     </section> 
+
+
                     <section class="row center">
                         <div class="top-down">
                             <div class="top-img">

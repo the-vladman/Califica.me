@@ -24,16 +24,24 @@ use App\Emergencia;
 use App\Academica;
 use App\Habilidad;
 use Auth;
-//Rekacion Becario / Proyecto
+//Relacion Becario / Proyecto
 use App\BP;
+//Relacion Becario / Equipo
+use App\BE;
 // EVALUACIONES
 use App\Evaluacion;
 use App\Tarea;
 //Sin relaicon
+//
+use App\Labor;
+use App\Noticia;
+use App\Equipo;
 use App\Recurso;
 use App\Proyecto;
 use App\Proyecto_archivo;
+
 use Storage;
+use Carbon\Carbon;
 //use DB;
 
 class BecarioController extends Controller
@@ -45,10 +53,20 @@ class BecarioController extends Controller
     }
 
     public function index(){
+        $today = Carbon::today();
+        if ($today->day < 15) {
+            $inicio = $today->firstOfMonth();
+            $futuro = $inicio->addDays(14);
+        }
+        else{
+            $futuro = $today->lastOfMonth();
+        }
+        $noticias = Noticia::where('fin',$futuro)->get();
+        $tareas = Labor::where('fin',$futuro)->get();
         $user = Auth::user();
         $recursos = Recurso::all();
         //$becario = DB::table('becarios')->where('user_id',$user->id)->first();
-        return view('Becario/index',compact('user','recursos'));
+        return view('Becario/index',compact('user','recursos','noticias','tareas'));
     }
 
     public function my_perfil(){
